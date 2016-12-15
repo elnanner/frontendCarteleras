@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+  
+  <!-- login  -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <link href="./css/bootstrap.min.css" rel="stylesheet">
+	  <link href="./css/login.css" rel="stylesheet">
+      <script src="./js/bootstrap.min.js"></script>
+  <!--  fin del login -->
+  
+  <!-- menues -->
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!--  fin menues -->
+<meta charset="UTF-8">
+<title>cartelera app</title>
+</head>
+<body ng-controller="mainController">
+
+ 
+
+
+  <!-- MAIN CONTENT AND INJECTED VIEWS -->
+    <div id="main">
+
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <div ng-view>
+        </div>
+
+    </div>
+
+</body>
+
+<script src="angular/angular.js"></script>
+<script src="app/app.js"></script>
+<script src="angular/angular-route.js"></script>
+
+<!-- controllers -->
+   <script src="./app/controllers/loginController.js"></script>
+   <script src="./app/controllers/contentBoardController.js"></script>
+</html>

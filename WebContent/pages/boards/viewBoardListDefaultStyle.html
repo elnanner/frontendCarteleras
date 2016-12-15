@@ -1,0 +1,19 @@
+ <div ng-init="updateBoardData('23')"></div>
+ <div ng-if="boards.length ==0"  >    <br><br><br>boards no tiene elemetnos =( </div> <!--brs por el menu que me come -->
+     
+     <div ng-repeat="board in boards">
+   <div class="col-md-4 portfolio-item">
+   
+      
+       <a ng-click='viewBoard("board.id")'> 
+			<img class="img-responsive" src="./images/cartelera.jpg" width="700" height="400" alt="">
+	
+		</a>   
+		<h3>
+			<a ng-click='updateBoardData(board.id)'> {{board.name}}</a> 
+		</h3>
+		<p>{{board.description}}</p>     
+     </div>   
+   </div>  
+  
+ 

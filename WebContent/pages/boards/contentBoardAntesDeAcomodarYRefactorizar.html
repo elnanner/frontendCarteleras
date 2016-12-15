@@ -1,0 +1,94 @@
+ <div ng-controller="contentBoardController">
+
+ <!-- <div ng-include="'menuSuperior.htm'"></div> -->
+ 
+ 
+ 
+<!--  <div ng-include="'favoritos.htm'"></div>-->
+ 
+ <header>
+            <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Angular Routing Example</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click='viewBoard("21")'><i class="fa fa-home"></i> Home</a></li>
+                    <li><a  href="#login"><i class="fa fa-shield"></i> Login</a></li>
+                    <li><a href="#alta"><i class="fa fa-comment"></i> Alta</a></li>
+                </ul>
+            </div>
+            </nav>
+        </header>
+        
+
+ <br>
+<!--   <br>
+<div ng-click='viewBoard("13")'> ir a la pizarra de primer anio</div> 
+<div ng-click='viewBoard(12)'> ir a la pizarra institucional</div> 
+<div ng-click='viewBoard(18)'> ir a la pizarra de ofertas laborales</div>-->
+ 
+ 
+ <!-- pizarras de la pizarra actual -->
+   <div class="container">
+ 
+  <div ng-if="boards.length ==0"  >boards no tiene elemetnos =(</div>
+     <div class="row">
+   <div ng-repeat="board in boards">
+   <div class="col-md-4 portfolio-item">
+   
+      
+       <a ng-click='viewBoard("board.id")'> 
+			<img class="img-responsive" src="./images/cartelera.jpg" width="700" height="400" alt="">
+	
+		</a>   
+		<h3>
+			<a ng-click='viewBoard(board.id)'> {{board.name}}</a> 
+		</h3>
+		<p>{{board.description}}</p>     
+     </div>   
+  </div>   
+   </div>  
+ 
+  
+
+
+ </div>
+<!-- fin pizarras -->
+
+
+<!--  notas de la pizarra actual -->
+<!-- <div ng-repeat="n in [] | range:100">
+  do something
+</div>
+  -->
+
+ </div>
+ 
+ 
+ 
+ <!-- HEADER AND NAVBAR -->
+ <!--       <header>
+            <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Angular Routing Example</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="#login"><i class="fa fa-shield"></i> Login</a></li>
+                    <li><a href="#alta"><i class="fa fa-comment"></i> Alta</a></li>
+                </ul>
+            </div>
+            </nav>
+        </header>
+
+
+    content board
+     
+     <div ng-controller="mainController">
+     <input type="text" ng-model="variable2">
+{{variable2}}
+</div>  -->

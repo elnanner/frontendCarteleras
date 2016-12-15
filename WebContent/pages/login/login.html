@@ -1,0 +1,54 @@
+
+<script>
+function error(){
+	$("#output").removeClass(' alert alert-success');
+	$("#output").addClass("alert alert-danger animated fadeInUp").html("ingres&oacute; mal el usuario o contrasenacute;a =( ");
+	
+	//document.getElementById('output').addClass("alert alert-danger animated fadeInUp").html("ingreso mal el usario o contraseña =() ");
+	//var d = document.getElementById('output');
+	//d.className += " alert alert-danger animated fadeInUp";
+	//d.value += "ingreso mal el usuario y/o contraseña =( ";
+};
+</script>
+
+<script>
+function login(){
+	alert("login");
+	var user = $("input[name=user]");
+	alert("login2");
+	var pass = $("input[name=password]");
+	alert("login3");
+	if(user!=pass){
+		error="errror";
+		$scope.setError();
+	}else{
+		alert("exito login");
+	}
+};
+</script>
+
+<div class="container">
+	<div class="login-container" ng-controller="loginController">
+	     error es: {{error}}
+		 <div id="output"  ng-show="error == 'error'">
+		      <script> error();</script>
+		</div>
+		 
+	 	<div class="avatar"></div>
+		<div class="form-box">
+			<!--  <form action="../Login" method="post">-->
+			<form ng-submit="tryLogin()">
+        		<input name="user" type="text" placeholder="username" ng-model="userNameLogin" autofocus required>
+          	  	<input name="password" type="password" placeholder="password" ng-model="passLogin">
+          		
+          		<!-- <button class="btn btn-info btn-block login" type="submit" onclick="login()">Login</button> -->
+      	 	     <button class="btn btn-info btn-block login" type="submit">Login</button>
+      	 	</form>
+    	</div>
+ 	</div>
+</div>
+
+
+<div>
+  <a class="btn btn-info btn-block" href="#/">ir al home</a>
+</div>
