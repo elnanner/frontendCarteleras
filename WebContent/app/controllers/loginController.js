@@ -15,7 +15,7 @@ var app=angular.module('app').controller('loginController', function ($scope){
 
 
 
-app.controller('loginController',['$scope', '$location',function($scope, $locationProvider){
+app.controller('loginController',['$scope','$location','$rootScope',function($scope, $locationProvider,$rootScope){
 	//notLogged();
 	init();
 	$scope.ver=function(){
@@ -36,9 +36,9 @@ app.controller('loginController',['$scope', '$location',function($scope, $locati
 		if($scope.userNameLogin==$scope.passLogin && $scope.formLogin.$submitted){  //&& $scope.userNameLogin.trim().lenght>0){  //fijarse vacios
 			$scope.error='no error';
 			//cambiar tipo de usuarip $parent.var?
-			$scope.userGlobal="logged";
-			
+			$rootScope.userGlobal="logged";
 			$locationProvider.path('/');
+		
 			//notLogged();
 		}else{
 			$scope.error='error';

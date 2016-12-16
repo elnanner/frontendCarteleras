@@ -6,7 +6,7 @@ app.controller('contentBoardController',['$scope','$http',function($scope,$http)
     		 url: "http://localhost:8080/backendCarteleras/boards/"+$id })
     	 .then(function(response){
     		$scope.boards = response.data.boardList;  	
-    	 }).Catch(function(response){
+    	 }).catch(function(response){
     		 alert("errour");
     	 $scope.mensaje = "algo anduvo mal";
     	 }); 
