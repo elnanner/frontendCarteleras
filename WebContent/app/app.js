@@ -1,12 +1,15 @@
  var app=angular.module('app', ['ngRoute']);
 // configure our routes
-app.config(function($routeProvider /*,$locationProvider*/) {
+ 
+ 
+app.config(function($routeProvider ,$locationProvider) {
     $routeProvider
 
         // route for the home page
         .when('/', {
             templateUrl : 'pages/boards/contentBoard.html',
-            controller  : 'contentBoardController'
+           
+            	
         }
         )
 
@@ -19,7 +22,7 @@ app.config(function($routeProvider /*,$locationProvider*/) {
         // route for the contact page
         .when('/alta', {
             templateUrl : 'pages/alta.html',
-           // controller  : 'altaController'
+            controller  : 'altaController'
         })
         .otherwise({ redirectTo: '/' 
         });
@@ -35,11 +38,16 @@ app.config(function($routeProvider /*,$locationProvider*/) {
    //$locationProvider.html5Mode(true);
    });
 
-// create the controller and inject Angular's $scope
+// create the controller and inject Angular's $scope, aca iba el mainController
 app.controller('mainController', function($scope){
-$scope.variable2='texto del main controller';
-
-$scope.user='visitante';
-
 
 });
+
+app.run(['$rootScope', function ($rootScope) {
+	$rootScope.userGlobal ="visitante";
+	
+	alert("arrancando");
+ }]);
+
+
+

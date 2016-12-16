@@ -28,8 +28,8 @@ function login(){
 </script>
 
 <div class="container">
-	<div class="login-container" ng-controller="loginController">
-	     error es: {{error}}
+	<div class="login-container" ng-controller="loginController" >
+	   	
 		 <div id="output"  ng-show="error == 'error'">
 		      <script> error();</script>
 		</div>
@@ -37,7 +37,7 @@ function login(){
 	 	<div class="avatar"></div>
 		<div class="form-box">
 			<!--  <form action="../Login" method="post">-->
-			<form ng-submit="tryLogin()">
+			<form ng-submit="tryLogin()" id="formLogin" name="formLogin" >
         		<input name="user" type="text" placeholder="username" ng-model="userNameLogin" autofocus required>
           	  	<input name="password" type="password" placeholder="password" ng-model="passLogin">
           		

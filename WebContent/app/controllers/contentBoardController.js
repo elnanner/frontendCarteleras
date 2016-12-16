@@ -3,11 +3,10 @@ app.controller('contentBoardController',['$scope','$http',function($scope,$http)
      $scope.updateBoardData = function($id) {
     	 $scope.currentBoard=$id;
     	 $http({method: "GET",
-    	 url: "http://localhost:8080/backendCarteleras/boards/"+$id })
-    	// params: {id: $id } })
-    	 .then(function(response) {
-    	 $scope.boards = response.data.boardList;  	
-    	 }).catch(function(response) {
+    		 url: "http://localhost:8080/backendCarteleras/boards/"+$id })
+    	 .then(function(response){
+    		$scope.boards = response.data.boardList;  	
+    	 }).Catch(function(response){
     		 alert("errour");
     	 $scope.mensaje = "algo anduvo mal";
     	 }); 
