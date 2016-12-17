@@ -45,7 +45,7 @@ app.controller('mainController', function($scope){
 
 app.run(['$rootScope', function ($rootScope) {
 
-	$rootScope.userGlobal ="visitante";
+	$rootScope.userGlobal =null;
 	
 	
 	

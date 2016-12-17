@@ -16,7 +16,7 @@ var app=angular.module('app').controller('loginController', function ($scope){
 
 
 app.controller('loginController',['$scope','$location','$rootScope',function($scope, $locationProvider,$rootScope){
-	//notLogged();
+	notLogged();
 	init();
 	$scope.ver=function(){
 		if($scope.valor=="hola"){
@@ -53,7 +53,8 @@ app.controller('loginController',['$scope','$location','$rootScope',function($sc
 	};
 	
 	function notLogged(){
-		if($scope.user=="logged"){
+		alert('logged or not');
+		if($rootScope.userGlobal!=null){
 			$locationProvider.path('/');
 			
 		}

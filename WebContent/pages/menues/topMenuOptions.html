@@ -4,8 +4,8 @@
 	<ul class="nav navbar-nav">						
 		 <li><a ng-click='updateBoardData("23")'>Home</a></li> <!--  todos tienen el link el home -->
 	   <!-- <li><a href='#/'>Home</a></li> -->
-	    <li ng-if="userGlobal!='logged'"><a  href="#login"><i class="fa fa-shield"></i> Login</a></li>
-	     <li ng-if="userGlobal=='logged'"><a  href="#logout"><i class="fa fa-shield"></i> Logout</a></li>
+	    <li ng-if="userGlobal==null"><a  href="#login"><i class="fa fa-shield"></i> Login</a></li>
+	     <li ng-if="userGlobal!=null"><a  href="#logout"><i class="fa fa-shield"></i> Logout</a></li>
 	    <li><a href="#alta"><i class="fa fa-comment"></i> Alta</a></li>
 		
 	</ul>
