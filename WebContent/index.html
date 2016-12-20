@@ -18,12 +18,12 @@
 	    <link href="./css/bootstrap.min.css" rel="stylesheet">
 	<!--  fin menues -->
 	</head>
-	<body >
+	<body>
 	
-			<div ng-controller="loginController"  class="navegacion">
+			<div class="navegacion">
 				<div ng-include src="'./pages/headers/header.html'"></div>
 				
-			<div ng-controller="mainController" class="container">
+			<div class="container">
 				<div class="jumbotron">
 			  
 					<h2 ng-show="mostrado">Bienvenidos a la Cartelera de la Facultad de Inform&aacute;ca de la UNLP</h2>
@@ -46,6 +46,7 @@
 		<script src="angular/angular-route.js"></script>
 
 		<!-- controllers -->
+		<script src="./app/controllers/altaController.js"></script>
    		<script src="./app/controllers/loginController.js"></script>
   		<script src="./app/controllers/contentBoardController.js"></script>
 	</body>

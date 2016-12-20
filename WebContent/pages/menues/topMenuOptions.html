@@ -2,11 +2,11 @@
  <!-- <link href="../css/bootstrap.min.css" rel="stylesheet">  --> <!--  lo muevo al index single page baby -->
  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	<ul class="nav navbar-nav">						
-		 <li><a ng-click='updateBoardData("26")'>Home</a></li> <!--  todos tienen el link el home -->
-	   <!-- <li><a href='#/'>Home</a></li> -->
-	    <li ng-if="userGlobal==null"><a  href="#login"><i class="fa fa-shield"></i> Login</a></li>
-	     <li ng-if="userGlobal!=null"><a  href="#logout"><i class="fa fa-shield"></i> Logout</a></li>
-	    <li><a href="#alta"><i class="fa fa-comment"></i> Alta</a></li>
+	<!--  <li><a ng-click='updateBoardData("26")'>Home</a></li> -->  <!--  todos tienen el link el home -->
+	 <li><a ng-href='#/home'>Home</a></li>
+     <li ng-if="userGlobal==null"><a  href="#login"><i class="fa fa-shield"></i> Login</a></li>
+     <li ng-if="userGlobal!=null"><a  href="#logout"><i class="fa fa-shield"></i> Logout</a></li>
+     <li><a ng-href="#/alta"><i class="fa fa-comment"></i> Alta</a></li>
 		
 	</ul>
 

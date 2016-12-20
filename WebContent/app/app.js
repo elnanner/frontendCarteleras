@@ -8,11 +8,14 @@ app.config(function($routeProvider ,$locationProvider) {
         // route for the home page
         .when('/', {
             templateUrl : 'pages/boards/contentBoard.html',
-           
-            	
+            controller : 'contentBoardController' /*el controller se declara acá o en la vista, no en ambos*/
         }
         )
-
+        .when('/home', {
+            templateUrl : 'pages/boards/contentBoard.html',
+            controller : 'contentBoardController' /*el controller se declara acá o en la vista, no en ambos*/
+        }
+        )
         // route for the about page
         .when('/login', {
             templateUrl : 'pages/login/login.html',
@@ -23,6 +26,10 @@ app.config(function($routeProvider ,$locationProvider) {
         .when('/alta', {
             templateUrl : 'pages/alta.html',
             controller  : 'altaController'
+        })
+        .when('/boards/:id?',{
+        	templateUrl: 'pages/boards/contentboard.html',
+        	//controller: 'contentBoardController'
         })
         .otherwise({ redirectTo: '/' 
         });

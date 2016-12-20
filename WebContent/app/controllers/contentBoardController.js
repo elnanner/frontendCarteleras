@@ -1,16 +1,18 @@
-app.controller('contentBoardController',['$scope','$http',function($scope,$http){	 
+app.controller('contentBoardController',['$scope','$http', '$location',function($scope,$http,$locationProvider){	 
      $scope.notes= "init N";
      $scope.updateBoardData = function($id) {
     	 $scope.currentBoard=$id;
     	 $http({method: "GET",
     		 url: "http://localhost:8080/backendCarteleras/boards/"+$id })
-    	 .then(function(response){
-    		$scope.boards = response.data.boardList;  	
-    	 }).catch(function(response){
+    	 .success(function(response){
+    		$scope.boards = response.boardList;
+    		$locationProvider.path("/boards/"+$id)	
+    	 }).error(function(response){
     		 alert("errour");
-    	 $scope.mensaje = "algo anduvo mal";
+    		 $scope.mensaje = "algo anduvo mal";
     	 }); 
      }
+     
 
      
 
