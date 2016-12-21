@@ -5,9 +5,80 @@
 	<!--  <li><a ng-click='updateBoardData("26")'>Home</a></li> -->  <!--  todos tienen el link el home -->
 	 <li><a ng-href='#/home'>Home</a></li>
      <li ng-if="userGlobal==null"><a  href="#login"><i class="fa fa-shield"></i> Login</a></li>
-     <li ng-if="userGlobal!=null"><a  href="#logout"><i class="fa fa-shield"></i> Logout</a></li>
-     <li><a ng-href="#/alta"><i class="fa fa-comment"></i> Alta</a></li>
+    <!--  <li ng-if="userGlobal!=null"><a  href="#logout"><i class="fa fa-shield"></i> Logout</a></li> -->
+     <!-- <li><a ng-href="#/alta"><i class="fa fa-comment"></i> Alta</a></li> -->
 		
+		
+		<!--  admin menu -->
+		<li ng-if="userPerfil.type==='adm'" class="dropdown"><a href="" class="dropdown-toggle"
+	data-toggle="dropdown" role="button" aria-haspopup="true"
+	aria-expanded="false">Operaciones Admin <span class="caret"></span></a>
+	<ul class="dropdown-menu">
+		<li><a href="#listBoard">Operaciones Cartelera(ABM)</a></li>
+		<li><a href="#listAllPublish">Listado publicaciones</a></li>
+		<li><a href="#createTemplate">Crear template</a></li>
+		<li><a href="userList">Listado Usuarios (BM)</a></li>
+		<li><a href="createUser">Alta usuarios</a></li>
+		<li><a href="createPubli">Alta publicacion</a></li>
+		<li role="separator" class="divider"></li>
+		<li><a href="#Others">Aqu&iacute; otros...</a></li>
+	</ul></li>
+		<!-- fin admin menu -->
+		
+			<!--  alu menu -->
+		<li ng-if="userPerfil.type==='alu'" class="dropdown"><a href="" class="dropdown-toggle"
+	data-toggle="dropdown" role="button" aria-haspopup="true"
+	aria-expanded="false">Operaciones Alumno <span class="caret"></span></a>
+	<ul class="dropdown-menu">
+		<li><a href="#interestList">Intereses</a></li>	
+	</ul></li>
+		<!-- fin alu menu -->
+		
+		<!--  profesor menu -->
+		<li ng-if="userPerfil.type==='doc'" class="dropdown"><a href="" class="dropdown-toggle"
+	data-toggle="dropdown" role="button" aria-haspopup="true"
+	aria-expanded="false">Operaciones Docente <span class="caret"></span></a>
+	<ul class="dropdown-menu">
+		<li><a href="#listPublish">Aqu&iacute; publicaciones</a></li>
+		<li><a href="#listStudentsProf">Aqu&iacute; Ver lista alumnos</a></li>
+		<li role="separator" class="divider"></li>
+		<li><a href="#createPubli">Alta publicacion</a></li>
+		<li><a href="#">Aqu&iacute; otros...</a></li>
+	</ul></li>
+		<!--  fin profesor menu -->
+		
+		
+			<!--  publicador menu -->
+		<li ng-if="userPerfil.type==='pub'" class="dropdown"><a href="" class="dropdown-toggle"
+	data-toggle="dropdown" role="button" aria-haspopup="true"
+	aria-expanded="false">Operaciones Publicador <span class="caret"></span></a>
+	<ul class="dropdown-menu">
+	<li><a href="#createPubli">Alta publicacion</a></li>
+	<li><a href="#listPublish">Aqu&iacute; publicaciones</a></li>
+		<li><a href="#">operaciones publicador</a></li>
+	</ul></li>
+		<!--  fin publicador menu -->
+		
+		
+		
+		<!--  administrative menu -->  <!-- ???????? -->
+			<li ng-if="userPerfil.type==='administrative'" class="dropdown"><a href="" class="dropdown-toggle"
+	data-toggle="dropdown" role="button" aria-haspopup="true"
+	aria-expanded="false">Operaciones Administrativo <span class="caret"></span></a>
+	<ul class="dropdown-menu">
+	<li><a href="#createPubli">Alta publicacion</a></li>
+	<li><a href="#listPublish">Aqu&iacute; publicaciones</a></li>
+		<li><a href="#">operaciones administrativo</a></li>
+	</ul></li>
+		<!--  fin administrative menu -->
+		
+		
+	</ul>
+	
+	<ul class="nav navbar-nav navbar-right" ng-if="userGlobal!=null">						
+                    	<li><a href="">{{userPerfil.name}} </a></li>
+                    	<li><a href="#logout">Logout</a></li>
+                    	<li> <a href="#alta"> <span class="glyphicon glyphicon-edit"></span></a><!-- hacer config -->                            
 	</ul>
 
 	
