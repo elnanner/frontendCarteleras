@@ -53,7 +53,7 @@ app.controller('mainController', function($scope){
 app.run(['$rootScope', function ($rootScope) {
 
 	$rootScope.userGlobal =null;
-	
+	$rootScope.userPerfil =null;
 	
 	
  }]);

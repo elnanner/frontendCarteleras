@@ -15,7 +15,7 @@ var app=angular.module('app').controller('loginController', function ($scope){
 
 
 
-app.controller('loginController',['$scope','$location','$rootScope',function($scope, $locationProvider,$rootScope){
+app.controller('loginController',['$scope','$http','$location','$rootScope',function($scope,$http, $locationProvider,$rootScope){
 	notLogged();
 	init();
 	$scope.ver=function(){
@@ -31,7 +31,7 @@ app.controller('loginController',['$scope','$location','$rootScope',function($sc
 		
 		
 		
-		
+		/*
 		//contra servidor
 		if($scope.userNameLogin==$scope.passLogin && $scope.formLogin.$submitted){  //&& $scope.userNameLogin.trim().lenght>0){  //fijarse vacios
 			$scope.error='no error';
@@ -43,7 +43,41 @@ app.controller('loginController',['$scope','$location','$rootScope',function($sc
 		}else{
 			$scope.error='error';
 			
-		}
+		}*/
+		 
+		
+		
+		/* var data = $.param({
+	            json: JSON.stringify({
+	                user: $scope.userNameLogin,
+	                pass: $scope.passLogin
+	            })
+	        });*/
+		//var data={"user": "prof1", "pass":"prof1"};
+		var data={"user": $scope.userNameLogin, "pass": $scope.passLogin};
+		    alert(JSON.stringify(data));
+	        $http.post("http://localhost:8080/backendCarteleras/tryLogin/", data)
+	        	.success(function(response, status) {
+	        		$scope.error='no error';
+	        		$rootScope.userPerfil=response;
+	        		//alert(JSON.stringify(response));
+	    			$rootScope.userGlobal="logged";
+	    			$locationProvider.path('/');
+	        	 }).error(function(response){
+	        		 /*alert(response.status);
+	        		 if(response.status==404){
+	        			 $scope.error='error';
+	        		 }else{//otro error
+	        		 alert("errour");
+	        		 $scope.mensaje = "algo anduvo mal";
+	        		 }*/
+	        		 
+	        		 
+	        		 $scope.error='error';
+	        		 //VER STATUS RESPUESTA PORQUE TODO ES UNDEFINED
+	        	 }); 
+		
+		 
 	};
 	
 	
@@ -53,7 +87,7 @@ app.controller('loginController',['$scope','$location','$rootScope',function($sc
 	};
 	
 	function notLogged(){
-		alert('logged or not');
+	//	alert('logged or not');
 		if($rootScope.userGlobal!=null){
 			$locationProvider.path('/');
 			
