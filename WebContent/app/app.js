@@ -1,4 +1,4 @@
- var app=angular.module('app', ['ngRoute']);
+ var app=angular.module('app', ['ngRoute', 'ngResource']);
 // configure our routes
  
  
@@ -27,9 +27,10 @@ app.config(function($routeProvider ,$locationProvider) {
             templateUrl : 'pages/alta.html',
             controller  : 'altaController'
         })
+        //para mostrar las pizarras en particular
         .when('/boards/:id?',{
-        	templateUrl: 'pages/boards/contentboard.html',
-        	//controller: 'contentBoardController'
+        	templateUrl: 'pages/boards/board.html',
+        	controller: 'boardController'
         })
         .otherwise({ redirectTo: '/' 
         });

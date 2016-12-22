@@ -4,8 +4,10 @@ app.controller('contentBoardController',['$scope','$http', '$location',function(
     	 $http({method: "GET",
     		 url: "http://localhost:8080/backendCarteleras/boards/"+$id })
     	 .success(function(response){
+    		alert(JSON.stringify("lista de boards "+response.boardList));
     		$scope.boards = response.boardList;
     		$scope.notes = response.noteList;
+    		alert(JSON.stringify("lista de notas "+response.noteList));
     		$locationProvider.path("/boards/"+$id)	
     	 }).error(function(response){
     		 alert("errour");
@@ -35,3 +37,12 @@ app.controller('contentBoardController',['$scope','$http', '$location',function(
 		     } 
 	    }
 }]);
+app.controller('boardController',['$scope', '$resource','$location', '$routeParams', function($scope, $resource,$location, $routeParams){
+	Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
+	$scope.board = Board.get({id: $routeParams.id});
+	//$location.path("/boards/"+$routeParams.id);
+	
+	//alert(JSON.stringify("lista de boards "+$scope.boards));
+	//alert("listas "+$scope.boards)
+	
+}])
