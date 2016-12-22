@@ -1,11 +1,11 @@
 app.controller('contentBoardController',['$scope','$http', '$location',function($scope,$http,$locationProvider){	 
-     $scope.notes= "init N";
      $scope.updateBoardData = function($id) {
     	 $scope.currentBoard=$id;
     	 $http({method: "GET",
     		 url: "http://localhost:8080/backendCarteleras/boards/"+$id })
     	 .success(function(response){
     		$scope.boards = response.boardList;
+    		$scope.notes = response.noteList;
     		$locationProvider.path("/boards/"+$id)	
     	 }).error(function(response){
     		 alert("errour");

@@ -1,95 +1,85 @@
- <script>
- function enviarFormulario(){
-	 if(document.getElementById("comentario").value!=""){
-		 alert("comentario "+document.getElementById("comentario").value+" del user "+document.getElementById("user").value);
-	 }//alert("comentario: ".concat(Document.getElementById("comentario").value));
-	 else{
-		 alert("el comentario no puede ser vacio!");
-	 }
- }
- </script>
- 
- 
-		 <a href="#" data-toggle="modal" data-target=<%= "#"+nota.getId() %> >
+<div ng-repeat="note in notes">
+   <div class="col-md-4 portfolio-item">
+   
+   <a href="#" data-toggle="modal" data-target="#{{note.id}}">
 		
-		<img class="img-responsive" src=<%="./images/papel.jpg"%> width="700" height="400" alt="" title="<%=nota.getPublish() %>">
-		<%-- ><img class="img-responsive" src=<%=nota.getPathImage()%> width="700" height="400" alt="" title="<%=nota.getTexto() %>">--%>
-	</a>   
+		<img class="img-responsive" src="./images/papel.jpg" width="700" height="400" alt="" title="{{note.publish}}">
+	</a> 
 	<h4>
-		<input type="button" class="btn-link" data-toggle="modal" data-target="<%= "#"+nota.getId() %>" value="Oferta de la empresa: <%= nota.getAuthor().getName()%>" > 
+		<input type="button" class="btn-link" data-toggle="modal" data-target="#{{note.id}}" value="Oferta de la empresa: {{note.author.name}}" > 
 	</h4>
-	<p><%= nota.getPublish()%></p>
-    
-    
-    
-    <!--  modal -->
-  <div class="modal fade" id="<%= nota.getId() %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<p>{{note.publish}}</p>
+	
+	
+	 <!--  modal -->
+  <div class="modal fade" id="#{{note.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><%= nota.getAuthor().getName() %></h4>
+        <h4 class="modal-title" id="myModalLabel">{{note.author.name}}</h4>
       </div>
       <div class="modal-body">
-        <%= "Fecha: " +nota.getPublishDate()%>
+        {{note.publishDate}}
         <br>
-        <%="&emsp;"+nota.getPublish() %>
+        {{note.publish}}
       </div>
       
-      <%if((Boolean)session.getAttribute("permiteComentar")){ %>
-      		<div class="modal-body">
+      
+      		<div ng-if="note.canCommet==true" class="modal-body">
       			<hr/>
-       			<% PersistentBag comments=(PersistentBag)nota.getComments() ; %>
-       			<% if(comments.size()==0){%>
+       		
+       			<div  ng-if="note.comments.length==0">
        		          No hay comentarios
-       			<% }else{ %>
-       			       <ul class="timeline">
-       		            <% for(int indice=0;indice<comments.size();indice++){ %>
+       			</div>
+       			       <ul class="timeline" ng-if="note.comments.length!=0">
+       			       
+       		            <div ng-repeat="n in range(0,note.comments.length)">
        		              
-      						
+      					 	
        						
-       		               <%if (indice%2==0){ %>
-       		                           <li> 
+       		              
+       		                           <li ng-if="n%2=0"> 
        		                       		
        		                       		  <div class="timeline-panel">
-       		                       			<%= (((Comment)comments.get(indice)).getAuthor().getName())+" dijo:"+(((Comment)comments.get(indice)).getText()) %>
+       		                       		  {{note.coments[n].author.name}} dijo: note.coments[n].text
+       		                       			
        		                       			   </div>
-       		                       			</li>
+       		                       		 </li>
        		                          
-       		                 <%}else{ %>
-       		                          <li class="timeline-inverted"> 
+       		                
+       		                          <li ng-if="n%2!=0" class="timeline-inverted"> 
        		                          		<div class="timeline-panel">
        		                          		
-       		                          				<%= ((Comment)comments.get(indice)).getAuthor()+" dijo:"+((Comment)comments.get(indice)).getText() %>
+       		                          				 {{note.coments[n].author.name}} dijo: note.coments[n].text
        		                          	 </div>			
        		                          	</li>
-       		                              
-       		                 <%} %>
-       		               
-       		                 
-       		             
-       		             <%} %>
+
+       		       
        		            </ul>
-       		    <% } %>
+       		    </div><!--  fin for -->
        		    
        		                 
-       		                    <% if(user!=null && user.getType().equals("alu")){ %>  		                        
-                                	<input placeholder="Escribe un comentario..." id="comentario" type="text" style="height:100px" class="form-control" required/>
-                                	<input id="user" type="hidden" value="<%=user.getName() %>" />
+       		                    <div ng-if="userPerfil.type==='alu'">		                        
+                                	<input ng-model="comentario" placeholder="Escribe un comentario..." id="comentario" type="text" style="height:100px" class="form-control" required/>
+                                	<!--  <input id="user" type="hidden" value="<%=user.getName() %>" />--> <!-- lo saque porque creo que no es necesario -->
                                 	<span class="text-mute">Queremos saber tu opini&oacute;n</span>
-                              	 <!--  <button class="btn btn-sm btn-primary pull-right">Save</button> -->
-                              	 <%} %>
+                              	 </div>  
        		    
        		</div>
       
-      <%} %>
+  
       
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>  
-          <% if(user!=null && user.getType().equals("alu")){ %>      
-       			 <button type="button" class="btn btn-primary" onClick="enviarFormulario()">Comentar</button>
-        <%} %>
+              
+       			 <button ng-if="userPerfil.type==='alu'" type="button" class="btn btn-primary" ng-click='enviarComentario()' >Comentar</button>
+        
       </div>
     </div>
-  </div>
-</div>
+	</div><!-- div modal -->
+	
+	
+	
+	</div> <!--  div col item --> 
+	</div>
