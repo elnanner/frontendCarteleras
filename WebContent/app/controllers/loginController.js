@@ -18,14 +18,16 @@ var app=angular.module('app').controller('loginController', function ($scope){
 app.controller('loginController',['$scope','$location', '$rootScope', 'LoginService',function($scope,$locationProvider,$rootScope, LoginService){
 	
 	$scope.mensaje = '';
+	$rootScope.userPerfil='';
 	  $scope.login = function(){
 	    console.log('Usuario: ' + $scope.userNameLogin);
 	    console.log('Password: ' + $scope.passLogin);
 
-	    LoginService.login($scope.userNameLogin, $scope.passLogin)
+	    LoginService.login($scope.userNameLogin, $scope.passLogin,$rootScope)
 	    .then(function(){
 	      $scope.mensaje = ''; //reset error message
 	      $rootScope.userGlobal="logged";
+	      
 	      $locationProvider.path('/');
 	    })
 	    .catch(function(){
@@ -33,7 +35,7 @@ app.controller('loginController',['$scope','$location', '$rootScope', 'LoginServ
 	    });
 	  }
 	}]);
-
+ 
 //	notLogged();
 //	init();
 //	$scope.ver=function(){

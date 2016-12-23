@@ -8,7 +8,7 @@ angular.module('app')
     }
   };
   
-  var login = function(user, password) {
+  var login = function(user, password,rootScope) {
     var defer = $q.defer();
     $http.post('http://localhost:8080/backendCarteleras/tryLogin/',
     {
@@ -18,8 +18,16 @@ angular.module('app')
     .success(function(data){
       console.log('El login responde: ');
       console.log(data);
-      localStorage.setItem('tokenSeguridad', data.token);
+      localStorage.setItem('tokenSeguridad', data.token.token);
       defer.resolve(data);
+      //alert(JSON.stringify(data.token));
+      alert(data.token.token);
+      alert(JSON.stringify(data.profile)); 
+      rootScope.userPerfil=data.profile;
+      
+      //alert(jwt_decode(data.token));
+     // alert(jwtHelper.decodeToken(data.token));
+  	 //alert(base64UrlEncode(header) + "." + base64UrlEncode(data.token));
     })
     .error(defer.reject);
 
