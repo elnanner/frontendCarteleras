@@ -25,13 +25,19 @@
 						<h4 class="modal-title">{{note.author.name}} dice: </h4>
 					</div>
 					<div class="modal-body">
-						<p>{{note.publishDate}}</p>
-						<p>{{note.publish}}</p>
-						puede comentar?  <p>{{note.canComment}}</p>
+						<span><b>Fecha Publicaci&oacute;n</b></span><p>{{note.publishDate}}</p>
+						<hr />
+						<span><b>T&iacute;tulo Publicaci&oacute;n</b></span><p>{{note.publish}}</p>
+						<hr />
+						<span><b>Comentarios Habilitados</b> </span><p>{{note.canComment}}</p>
+						<div  ng-if="note.comments.length==0">
+       		          		No hay comentarios
+       					</div>
+       					<hr />
 						<div ng-repeat="comment in note.comments">
-							Texto: <p>{{comment.text}}</p>
+							<span><b>Texto Publicaci&oacute;n</b></span> <p>{{comment.text}}</p>
 						</div>
-						
+						<hr />
 					<!-- parte de comentarios -->
 					<div ng-if="note.canCommet==true" class="modal-body">
 						<hr />
