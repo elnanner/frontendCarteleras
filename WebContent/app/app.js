@@ -8,12 +8,12 @@ app.config(function($routeProvider ,$locationProvider) {
         // route for the home page
         .when('/', {
             templateUrl : 'pages/boards/contentBoard.html',
-            controller : 'contentBoardController' /*el controller se declara acá o en la vista, no en ambos*/
+            controller : 'boardController' /*el controller se declara acá o en la vista, no en ambos*/
         }
         )
         .when('/home', {
-            templateUrl : 'pages/boards/contentBoard.html',
-            controller : 'contentBoardController' /*el controller se declara acá o en la vista, no en ambos*/
+        	templateUrl : 'pages/boards/contentBoard.html',
+            controller : 'boardController'/*el controller se declara acá o en la vista, no en ambos*/
         }
         )
         // route for the about page
@@ -29,7 +29,7 @@ app.config(function($routeProvider ,$locationProvider) {
         })
         //para mostrar las pizarras en particular
         .when('/boards/:id?',{
-        	templateUrl: 'pages/boards/board.html',
+        	templateUrl: 'pages/boards/contentBoard.html',
         	controller: 'boardController'
         })
         .otherwise({ redirectTo: '/' 

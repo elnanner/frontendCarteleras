@@ -1,4 +1,4 @@
-app.controller('contentBoardController',['$scope','$http', '$location',function($scope,$http,$locationProvider){	 
+/*app.controller('contentBoardController',['$scope','$http', '$location',function($scope,$http,$locationProvider){	 
      $scope.updateBoardData = function($id) {
     	 $scope.currentBoard=$id;
     	 $http({method: "GET",
@@ -36,13 +36,19 @@ app.controller('contentBoardController',['$scope','$http', '$location',function(
 		    	 $scope.boards=[];	
 		     } 
 	    }
-}]);
-app.controller('boardController',['$scope', '$resource','$location', '$routeParams', function($scope, $resource,$location, $routeParams){
+}]);*/
+app.controller('boardController',['$scope', '$resource','$location', '$routeParams', function($scope, $resource,$locationProvider, $routeParams){
 	Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
-	$scope.board = Board.get({id: $routeParams.id});
-	//$location.path("/boards/"+$routeParams.id);
+	if($locationProvider.path() == "/" || $locationProvider.path()=="/home"){
+		$scope.board = Board.get({id: "26"});
+	}else{
+		$scope.board = Board.get({id: $routeParams.id});
+	}
+		
+		
 	
-	//alert(JSON.stringify("lista de boards "+$scope.boards));
+	
+	//alert("notas ");
 	//alert("listas "+$scope.boards)
 	
 }])
