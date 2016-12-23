@@ -30,20 +30,24 @@ function login(){
 <div class="container">
 	<div class="login-container" ng-controller="loginController" >
 	   	
-		 <div id="output"  ng-show="error == 'error'">
-		      <script> error();</script>
+		 <div id="output"  ng-bind="mensaje">
+		     <!--  <script> error();</script> -->
 		     
 		</div>
-		 
+		<!-- esto est lo nuevo -->
+		 <div ng-if="mensaje" class="alert alert-danger" role="alert">
+          <small ng-bind="mensaje"></small>
+        </div>
+        <!--  -->
 	 	<div class="avatar"></div>
 		<div class="form-box">
 			<!--  <form action="../Login" method="post">-->
-			<form ng-submit="tryLogin()" id="formLogin" name="formLogin" >
+			<form ng-submit="login()" id="formLogin" name="formLogin" >
         		<input name="user" type="text" placeholder="username" ng-model="userNameLogin" autofocus required>
-          	  	<input name="password" type="password" placeholder="password" ng-model="passLogin">
+          	  	<input name="password" type="password" placeholder="password" ng-model="passLogin" required>
           		
           		<!-- <button class="btn btn-info btn-block login" type="submit" onclick="login()">Login</button> -->
-      	 	     <button class="btn btn-info btn-block login" type="submit">Login</button>
+      	 	     <button  class="btn btn-info btn-block login" type="submit">Login <i class="fa fa-sign-in"></i></button>
       	 	</form>
     	</div>
  	</div>

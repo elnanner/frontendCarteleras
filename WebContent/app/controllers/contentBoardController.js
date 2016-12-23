@@ -51,4 +51,11 @@ app.controller('boardController',['$scope', '$resource','$location', '$routePara
 	//alert("notas ");
 	//alert("listas "+$scope.boards)
 	
-}])
+}]);
+
+app.config(function($routeProvider ,$locationProvider) {
+    $routeProvider
+    .when('/hola',{
+    	templateUrl: 'pages/alta.html',
+    	controller: 'altaController'
+    })});

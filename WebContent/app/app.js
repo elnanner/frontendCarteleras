@@ -32,6 +32,10 @@ app.config(function($routeProvider ,$locationProvider) {
         	templateUrl: 'pages/boards/contentBoard.html',
         	controller: 'boardController'
         })
+        .when('/juas',{
+        	templateUrl: 'pages/alta.html',
+        	controller: 'altaController'
+        })
         .otherwise({ redirectTo: '/' 
         });
          
@@ -51,13 +55,17 @@ app.controller('mainController', function($scope){
 
 });
 
-app.run(['$rootScope', function ($rootScope) {
+app.run(['$rootScope', '$location', function ($rootScope, $locationProvider, LoginService) {
 
-	$rootScope.userGlobal =null;
-	$rootScope.userPerfil =null;
-	
-	
+		$rootScope.userGlobal =null;
+		$rootScope.userPerfil =null;
+	    $rootScope.$on('$stateChangeStart', function (event, toState) {
+	        if (!LoginService.isLoggedIn() && toState.url != "/login") {
+	            console.log('Denegar');
+	            event.preventDefault();
+	            //$state.go('login');
+	            $locationProvider.path('/login')
+	        }
+	    });
  }]);
-
-
 
