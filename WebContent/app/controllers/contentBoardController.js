@@ -40,7 +40,7 @@
 app.controller('boardController',['$scope', '$resource','$location', '$routeParams', function($scope, $resource,$locationProvider, $routeParams){
 	Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
 	if($locationProvider.path() == "/" || $locationProvider.path()=="/home"){
-		$scope.board = Board.get({id: "26"});
+		$scope.board = Board.get({id: "25"});
 	}else{
 		$scope.board = Board.get({id: $routeParams.id});
 	}
