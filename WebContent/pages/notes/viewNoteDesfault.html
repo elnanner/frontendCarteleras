@@ -2,14 +2,71 @@
 <div ng-repeat="note in board.noteList">
    <div class="col-md-4 portfolio-item">
    
-   <a href="#" data-toggle="modal" data-target="#{{note.id}}">
+   <!-- <a href="#" data-toggle="modal" data-target="#{{note.id}}">
 		
 		<img class="img-responsive" src="./images/papel.jpg" width="700" height="400" alt="" title="{{note.publish}}">
 	</a> 
 	<h4>
 		<input type="button" class="btn-link" data-toggle="modal" data-target="#{{note.id}}" value="Oferta de la empresa: {{note.author.name}}" > 
 	</h4>
-	<p>{{note.publish}}</p>
+	<p>{{note.publish}}</p> -->
+
+	<a data-toggle="modal" data-target="#myModal">
+		{{note.publish}}</a>
+	<img data-toggle="modal" data-target="#myModal" class="img-responsive" src="./images/papel.jpg" width="700" height="400" alt="" title="{{note.publish}}">
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" >
+	  <div class="modal-document" role="document">
+	
+	    <!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">{{note.author.name}} dice: </h4>
+					</div>
+					<div class="modal-body">
+						<p>{{note.publishDate}}</p>
+						<p>{{note.publish}}</p>
+						puede comentar?  <p>{{note.canComment}}</p>
+						<div ng-repeat="comment in note.comments">
+							Texto: <p>{{comment.text}}</p>
+						</div>
+						
+					<!-- parte de comentarios -->
+					<div ng-if="note.canCommet==true" class="modal-body">
+						<hr />
+						<div ng-if="note.comments.length==0">No hay comentarios</div>
+						<ul class="timeline" ng-if="note.comments.length!=0">
+							<div ng-repeat="n in range(0,note.comments.length)">
+								<li ng-if="n%2=0">
+									<div class="timeline-panel">
+										{{note.comments[n].author.name}} dijo: {{note.comments[n].text}}</div>
+								</li>
+								<li ng-if="n%2!=0" class="timeline-inverted">
+									<div class="timeline-panel">
+										{{note.comments[n].author.name}} dijo: {{note.comments[n].text}}</div>
+								</li>
+							</div>
+						</ul>
+					</div>
+					<div ng-if="userPerfil.type==='alu'">
+						<input ng-model="comentario"
+							placeholder="Escribe un comentario..." id="comentario"
+							type="text" style="height: 100px" class="form-control" required />
+						<input id="user" type="hidden" value="<%=user.getName() %>" /> 
+						<span class="text-mute">Queremos
+							saber tu opini&oacute;n</span>
+					</div>
+				</div>
+				<!-- fin comentarios -->
+				</div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	
+	  </div>
+	</div>
 
 	 <!--  modal 
   <div class="modal fade" id="#{{note.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
