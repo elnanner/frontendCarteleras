@@ -21,8 +21,8 @@ angular.module('app')
       localStorage.setItem('tokenSeguridad', data.token.token);
       defer.resolve(data);
       //alert(JSON.stringify(data.token));
-      alert(data.token.token);
-      alert(JSON.stringify(data.profile)); 
+      //alert(data.token.token);
+      //alert(JSON.stringify(data.profile)); 
       rootScope.userPerfil=data.profile;
       
       //alert(jwt_decode(data.token));
