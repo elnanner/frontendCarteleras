@@ -37,13 +37,21 @@
 		     } 
 	    }
 }]);*/
-app.controller('boardController',['$scope', '$resource','$location', '$routeParams', function($scope, $resource,$locationProvider, $routeParams){
-	Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
-	if($locationProvider.path() == "/" || $locationProvider.path()=="/home"){
-		$scope.board = Board.get({id: "25"});
-	}else{
-		$scope.board = Board.get({id: $routeParams.id});
-	}
+app.controller('boardController',['$scope', '$resource','$location', '$routeParams', 'LoginService', function($scope, $resource,$locationProvider, $routeParams, LoginService){
+	//si no estas logeuado vas al login pero podes ver el home 
+//	if (!LoginService.isLoggedIn()) {//si el usuario no esta logueado
+//         //alert('Denegar');
+//         event.preventDefault();
+//         //$state.go('login');
+//         $locationProvider.path('/login')
+//     }else{
+		Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
+		if($locationProvider.path() == "/" || $locationProvider.path()=="/home"){
+			$scope.board = Board.get({id: "25"});
+		}else{
+			$scope.board = Board.get({id: $routeParams.id});
+		}
+     }
 		
 		
 	
@@ -51,11 +59,5 @@ app.controller('boardController',['$scope', '$resource','$location', '$routePara
 	//alert("notas ");
 	//alert("listas "+$scope.boards)
 	
-}]);
+]);
 
-app.config(function($routeProvider ,$locationProvider) {
-    $routeProvider
-    .when('/hola',{
-    	templateUrl: 'pages/alta.html',
-    	controller: 'altaController'
-    })});
