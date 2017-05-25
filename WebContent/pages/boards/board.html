@@ -1,15 +1,20 @@
-<div class="container" ng-init="/#boards/26">
+<!-- <div class="container" ng-init="#/boards/25"> -->
+<div class="container">
 
 	<h3> Pizarra {{board.name}}</h3>
 
-	 <div ng-if="board.boardlength ==0 && board.noteList.length==0"  >    <br><br><br>boards no tiene elemetnos =( </div> <!--brs por el menu que me come -->
+
+     <div ng-if="board.boardList.lenght == 0"> lalallalala </div>
+	 <div ng-if="board.boardList.lenght ==0 && board.noteList.length==0">  <br><br><br>boards no tiene elemetnos =( </div> <!--brs por el menu que me come -->
      
      <h4>Board {{board.id}}</h4>
 		<h5>Nombre {{board.name}}</h5>
 		<h5>Descripcion {{board.description}}</h5>
 		<div >
 				
-			</div>   
+			</div>  
+			
+	<div ng-if="board.boardList.lenght != 0">		 
     <div ng-repeat="subBoard in board.boardList">
    		 <div class="col-md-4 portfolio-item">
       		<a ng-href='#/boards/{{subBoard.id}}'> 
@@ -23,6 +28,7 @@
 			<p>{{subBoard.description}}</p>
 			  
      	 </div>   
-   	</div>  
+   	</div> 
+   	</div> 
 
 </div>

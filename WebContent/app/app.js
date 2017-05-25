@@ -26,6 +26,18 @@ app.config(function($routeProvider ,$locationProvider) {
             templateUrl : 'pages/alta.html',
             controller  : 'altaController'
         })
+    //OJO QUE ESAN EN EL CONTROLADOR DE TOP MENU PERO NI BOLA PARECE...
+        
+         .when('/createUser',{
+	    	templateUrl: 'pages/userOperations/createUser.html',
+	    	controller: 'topMenuOptionController'
+	    })
+	    .when('/userList',{
+	    	templateUrl: 'pages/userOperations/listUsers.html',
+	    	controller: 'topMenuOptionController'
+	    })
+        
+        //FIN OJO
         //para mostrar las pizarras en particular
         .when('/boards/:id?',{
         	templateUrl: 'pages/boards/contentBoard.html',

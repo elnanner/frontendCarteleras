@@ -31,7 +31,7 @@ app.controller('loginController',['$scope','$location', '$rootScope', 'LoginServ
 	      $locationProvider.path('/');
 	    })
 	    .catch(function(){
-	      $scope.mensaje = 'Usuario o Contraseña invalido. Por favor, vuelva a intentarlo';
+	      $scope.mensaje = 'Usuario o contrase\u00f1a inv\u00E1lidos. Por favor, vuelva a intentarlo';
 	    });
 	  }
 	}]);
