@@ -35,16 +35,16 @@ app.controller("topMenuOptionController", function($scope, $http, $location, $re
 	};
 	
 	$scope.saveUser = function(){
-		alert("usuario ingresado correctamente");
+		alert("usuario ingresado correctamente"+usuario);
 		
 		$http({
 			url: "http://localhost:8080/backendCarteleras/createUser",
 			method: "POST",
-			data: $scope.usuario,
+			data: $scope.usuario.type,
 			headers: {"Content-Type": "application/x-www-form-urlencoded"}
 		}).then(//si todo fue correcto
 			function(respuesta){
-				$location.path('/');
+				$location.path('/listUsers');
 			}
 		)
 		
