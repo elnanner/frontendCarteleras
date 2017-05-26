@@ -36,6 +36,12 @@ app.config(function($routeProvider ,$locationProvider) {
 	    	templateUrl: 'pages/userOperations/listUsers.html',
 	    	controller: 'topMenuOptionController'
 	    })
+	     .when('/listBoard',{
+	    	templateUrl: 'pages/userOperations/listBoards.html',
+	    	controller: 'listController'
+	    })
+	    
+	    
         
         //FIN OJO
         //para mostrar las pizarras en particular
