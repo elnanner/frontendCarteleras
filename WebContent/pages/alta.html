@@ -1,7 +1,56 @@
+<!-- 	
 <div>
  <h1 ng-bind="altavalor"></h1>
 	ingresar datos
 <input type="text" id="alta" ng-model="altavalor" />
+<h2>Alumnos</h2>
+<ul ng-repeat= "alumno in lista">
+	<li>Nombre:{{alumno.nombre}}</li>
+</ul>
 
+</div>
+-->
 
+<div class="container">
+<h2>Este es Alta de no se qué, me confundí</h2>
+	<form action="AltaUsuario" method="post">
+		<div class="form-group">	
+			<label for="tipoUsuario">Tipo de Usuario: </label>
+			<select name="tipoUsuario">
+			<option selected value="">Elegir tipo</option>
+			  <option value="adm" id="adm" >Administrador</option>
+			  <option value="pub" id="pub" >Publicador</option>
+			   <option value="alu" id="alu" >Alumno</option>
+			    <option value="pro" id="pro" >Profesor</option>
+			     <!--   <option value="sec" id="sec" >Secretario</option>-->
+			</select>
+			 
+		</div>	
+		<!--  <div class="form-group">
+			<label for="name">Nombre Completo (Usuario o Empresa):</label>
+			<input class="form-control" placeholder="Ingrese Nombre" type="text" id="name" name="name" required>
+		</div>-->
+		<div class="form-group">	
+			<label for="descrip">Nombre de Usuario:</label>
+			<input type="text"  class="form-control" id="usuario" placeholder="Nombre de usuario"  name="usuario" ng-model="usuario.nombre">
+			 
+		</div>	
+		<div class="form-group">	
+			<label for="descrip">Contrase&ntilde;a:</label>
+			<input type="password"  class="form-control" id="password1" placeholder="Aqu&iacute; su Contrase&ntilde;a"  name="password1" ng-model="usuario.password" >
+			 
+		</div>	
+		<div class="form-group">	
+			<label for="descrip">Repetir Contrase&ntilde;a:</label>
+			<input type="password"  class="form-control" id="password2" placeholder="Aqu&iacute; su Contrase&ntilde;a"  name="password2">
+			 
+		</div>	
+		
+		<div class="form-group">
+			<label for="email">Email:</label>
+			<input class="form-control" placeholder="Ingrese mail" type="email" id="email" name="email" >
+		</div>
+	
+	<button type="submit" ng-click="saveUser()" class="btn btn-success">Registrar Usuario</button>
+	</form>
 </div>

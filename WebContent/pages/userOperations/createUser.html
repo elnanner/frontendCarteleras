@@ -1,5 +1,5 @@
 
-<h1 style="text-align:center"> Alta Usuario</h1>
+<h1 style="text-align:center"> Alta Usuarios</h1>
 
 
 
@@ -14,7 +14,7 @@
 
 
 <div class="container">
-	<form ng-submit="createUser()" method="post">
+	<form method="post">
 		<div class="form-group">	
 			<label for="tipoUsuario">Tipo de Usuario: </label>
 			<select ng-model="type" name="tipoUsuario" required>
@@ -49,6 +49,10 @@
 			<input ng-model="mail" class="form-control" placeholder="Ingrese mail" type="email" id="email" name="email" required>
 		</div>
 	
-	<button type="submit" ng-click="createUser()" class="btn btn-success">Registrar Usuario</button>
+	<button type="submit" ng-click="saveUser()" class="btn btn-success">Registrar Usuario</button>
 	</form>
+	
+	<div class="container">
+		<button ng-click="saludar()"> Saludando</button>
+	</div>
 </div>

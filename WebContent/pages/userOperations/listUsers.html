@@ -1,10 +1,100 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-   soy un listado de usuarios!
-</body>
-</html>
+<h1 style="text-align:center"> Listado Usuarios</h1>
+	<div class="container" ng- style="background:#ddd">
+		<h4 style="text-align:left">Publicadores</h4>
+		<table class="table table-striped">
+			
+			<thead>
+				<tr>
+					<th class="col-md-4">Nombre usuario</th>
+					<th class="col-md-4">Perfil</th>
+					<th class="col-md-4">Operaciones</th>
+				</tr>
+			</thead>
+		
+			<tbody>
+				<tr id="filaA" ng-repeat="user in users">
+					<td>{{user.name}}</td>
+					<td>{{user.type}}</td>
+					<td><a href="#" onclick="eliminarAdministrador()">
+         				 <span class="glyphicon glyphicon-trash"></span>
+     					   </a> 
+     					     <a href="#" >
+        				 <span class="glyphicon glyphicon-cog"> </span>
+        				 </a>
+     				</td>
+				</tr>
+				<!-- <tr id="filaP">
+					<td>Ramiro Ongaro</td>
+					<td>Docente</td>
+					<td><a href="#">
+        				 <span class="glyphicon glyphicon-cog"> </span>
+        				 </a>
+                          <a href="#" onclick="eliminarPublicador()">
+         				 <span class="glyphicon glyphicon-trash"></span>
+     					   </a>    
+     					     <a href="AdministrarPermisosSobrePizarra.jsp">
+         				 		<span class="glyphicon glyphicon-sunglasses"></span>
+     					   </a>
+     			    </td>
+				</tr>
+				<tr id="filaP">
+					<td>Luciano Matsuo</td>
+					<td>Publicador</td>
+					<td>
+					     <a href="#">
+        				 <span class="glyphicon glyphicon-cog"> </span>
+        				 </a>
+                          <a href="#" onclick="eliminarPublicador()">
+         				 <span class="glyphicon glyphicon-trash"></span>
+     					   </a>    
+     					     <a href="AdministrarPermisosSobrePizarra.jsp">
+         				 <span class="glyphicon glyphicon-sunglasses"></span>
+     					   </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr />
+		<hr />
+		<h4 style="text-align:left">Administradores</h4>
+		<table class="table table-striped" ng-repeat="user in lista">
+			
+			<thead>
+				<tr >
+					<th class="col-md-4">Nombre de usuario</th>
+					<th class="col-md-4">&nbsp</th>
+					<th class="col-md-4">Operaciones</th>
+				</tr>
+			</thead>
+		
+			<tbody>
+				<tr id="filaA">
+					<td>Ramiro Ongaro</td>
+					<td>&nbsp</td>
+					<td><a href="#" onclick="eliminarAdministrador()">
+         				 <span class="glyphicon glyphicon-trash"></span>
+     					   </a> 
+     					     <a href="#">
+        				 <span class="glyphicon glyphicon-cog"> </span>
+        				 </a>
+     			   </td>
+				</tr>
+				<tr id="filaA">
+					<td>Luciano Matsuo</td>
+					<td>&nbsp</td>
+					<td><a href="#" onclick="eliminarAdministrador()">
+         				 <span class="glyphicon glyphicon-trash"></span>
+     					   </a> 
+     					     <a href="#" >
+        				 <span class="glyphicon glyphicon-cog"> </span>
+        				 </a>
+     				</td>
+				</tr>
+				-->
+				
+			</tbody>
+		</table>
+	
+	
+	</div>
+	
