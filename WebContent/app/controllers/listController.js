@@ -1,5 +1,5 @@
 var app = angular.module("app");//obtenemos la el modulo para poder usarlo
-app.controller('listController', function($scope, $resource, $location, $http){
+app.controller('listController', function($scope, $resource, $location, $http, $route){
 
 		//Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
 	//	if($locationProvider.path() == "/" || $locationProvider.path()=="/home"){
@@ -27,7 +27,8 @@ app.controller('listController', function($scope, $resource, $location, $http){
 			headers: {"Content-Type": "application/json"}
 		}).then(//si todo fue correcto
 			function(respuesta){
-				$location.path('/userList');
+				//$location.path('/userList');
+				$route.reload();
 			}
 		)
 	}
