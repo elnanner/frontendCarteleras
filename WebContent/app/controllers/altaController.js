@@ -1,4 +1,4 @@
-
+/*
 app.controller('altaController',['$scope','$location', '$rootScope', 'LoginService',function($scope,$locationProvider,$rootScope, UserService){
 	alert("in alta controller");
 	$scope.mensaje = '';
@@ -45,3 +45,45 @@ $scope.saveUser = function(){
 	}
 	
 });*/
+var app = angular.module("app");//obtenemos la el modulo para poder usarlo
+app.controller("altaController", function($scope, $http, $location){
+	$scope.createUser = function(){
+		alert(" createUser Nuevo");
+		/*var data={"user": $scope.name, "pass": $scope.pass, "mail": $scope.mail, "type": $scope.type};	
+		    alert(JSON.stringify(data));
+	      /*  $http.post("http://localhost:8080/backendCarteleras/createUser/", data)
+	        	.success(function(response, status) {
+	        		$scope.mensajeError='';
+	        		
+	    			$locationProvider.path('/listUsers');
+	        	 }).error(function(response){
+	        		 
+	        		 $scope.mensajeError='error';
+	        	
+	        	 }); 
+		*/
+		 
+	};
+	
+	$scope.saludar = function(){
+		alert("saludando");
+	};
+	
+	$scope.saveUser = function(){
+		//alert("usuario ingresado correctamente");
+		var usuario = {user: $scope.usuario.user, pass: $scope.usuario.pass, mail: $scope.usuario.mail, type: $scope.usuario.type };
+		alert(usuario);
+		$http({
+			url: "http://localhost:8080/backendCarteleras/createUser",
+			method: "POST",
+			data: usuario,
+			headers: {"Content-Type": "application/json"}
+		}).then(//si todo fue correcto
+			function(respuesta){
+				$location.path('/userList');
+			}
+		)
+		
+		
+	};
+});
