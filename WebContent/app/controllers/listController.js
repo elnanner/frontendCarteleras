@@ -1,5 +1,5 @@
-
-app.controller('listController',['$scope', '$resource','$location', '$routeParams', 'LoginService', function($scope, $resource,$locationProvider, $routeParams, LoginService){
+var app = angular.module("app");//obtenemos la el modulo para poder usarlo
+app.controller('listController', function($scope, $resource, $location, $http){
 
 		//Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
 	//	if($locationProvider.path() == "/" || $locationProvider.path()=="/home"){
@@ -7,10 +7,30 @@ app.controller('listController',['$scope', '$resource','$location', '$routeParam
 //		}else{
 //			$scope.board = Board.get({id: $routeParams.id});
 //		}
-	alert("listController");
-    }
+	$http({
+	    method: 'GET', 
+	    url: 'http://localhost:8080/backendCarteleras/users'
+	  }).success(function(data, status, headers, config) {
+	      $scope.users=data;
+	  }).error(function(data, status, headers, config) {
+	      alert("Ha fallado la petición. Estado HTTP:"+status);
+	  });
 		
-	
+	$scope.deleteUser = function(id){
+		//var id = {idUser: $scope.user.id };
+		
+		alert(id);
+		$http({
+			url: "http://localhost:8080/backendCarteleras/deleteUser",
+			method: "DELETE",
+			data: {idUser: id},
+			headers: {"Content-Type": "application/json"}
+		}).then(//si todo fue correcto
+			function(respuesta){
+				$location.path('/userList');
+			}
+		)
+	}
 
-]);
+});
 

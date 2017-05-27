@@ -1,6 +1,6 @@
 <h1 style="text-align:center"> Listado Usuarios</h1>
-	<div class="container" ng- style="background:#ddd">
-		<h4 style="text-align:left">Publicadores</h4>
+	<div class="container" ng- style="background:#ddd" ng-controller="listController">
+		
 		<table class="table table-striped">
 			
 			<thead>
@@ -15,7 +15,7 @@
 				<tr id="filaA" ng-repeat="user in users">
 					<td>{{user.name}}</td>
 					<td>{{user.type}}</td>
-					<td><a href="#" onclick="eliminarAdministrador()">
+					<td><a href="" ng-click="deleteUser(user.id)">
          				 <span class="glyphicon glyphicon-trash"></span>
      					   </a> 
      					     <a href="#" >
