@@ -1,6 +1,6 @@
  var app=angular.module('app', ['ngRoute', 'ngResource']);
 // configure our routes
- 
+ alert("rrrraaa");
  
 app.config(function($routeProvider ,$locationProvider) {
     $routeProvider
@@ -65,13 +65,14 @@ app.config(function($routeProvider ,$locationProvider) {
 
 // create the controller and inject Angular's $scope, aca iba el mainController
 app.controller('mainController', function($scope){
-
+           alert("main ctrl");
 });
 
 app.run(['$rootScope', '$location','LoginService','UserService', function ($rootScope, $locationProvider, LoginService, UserService) {
-
+        alert("ini app?");
 		$rootScope.userGlobal =null;
 		$rootScope.userPerfil =null;
+		alert("app init");
 		//LoginService.logout();//reseteo la sesion al arrancar
 	   
  }]);
