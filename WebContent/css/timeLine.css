@@ -1,7 +1,20 @@
+.gris{
+    background-color: #eeeeee;
+}
+
+.modal-footer{
+    background-color: #eeeeee;
+}
+
+.modal-document{
+    background-color: #eeeeee;
+}
+
 .timeline {
   list-style: none;
   padding: 20px 0 20px;
   position: relative;
+  background-color: #eeeeee;
 }
 
 .timeline:before {
@@ -140,8 +153,10 @@
 .timeline-body > p,
 .timeline-body > ul {
   margin-bottom: 0;
+  background-color:#eeeeee;
 }
 
 .timeline-body > p + p {
   margin-top: 5px;
+  background-color:#eeeeee;
 }
