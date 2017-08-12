@@ -1,13 +1,21 @@
 .gris{
-    background-color: #eeeeee;
+    background-color: #8080ff;
 }
 
 .modal-footer{
-    background-color: #eeeeee;
+    background-color: #8080ff;
 }
 
 .modal-document{
-    background-color: #eeeeee;
+    background-color: #8080ff;
+}
+
+ul.timeline{
+	background-color: #8080ff;
+}
+
+.timeline-panel{
+	background-color: #ffffff;
 }
 
 .timeline {
@@ -27,6 +35,8 @@
   left: 50%;
   margin-left: -1.5px;
 }
+
+
 
 .timeline > li {
   margin-bottom: 20px;
@@ -153,7 +163,7 @@
 .timeline-body > p,
 .timeline-body > ul {
   margin-bottom: 0;
-  background-color:#eeeeee;
+  background-color:#ffffff;
 }
 
 .timeline-body > p + p {

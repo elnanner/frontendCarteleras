@@ -37,7 +37,7 @@
 		     } 
 	    }
 }]);*/
-app.controller('boardController',['$scope', '$resource','$location', '$routeParams', 'LoginService', function($scope, $resource,$locationProvider, $routeParams, LoginService){
+app.controller('boardController',['$scope', '$resource','$location', '$routeParams', 'OtherOperations', function($scope, $resource,$locationProvider, $routeParams, OtherOperations){
 	//si no estas logeuado vas al login pero podes ver el home 
 //	if (!LoginService.isLoggedIn()) {//si el usuario no esta logueado
 //         //alert('Denegar');
@@ -47,14 +47,42 @@ app.controller('boardController',['$scope', '$resource','$location', '$routePara
 //     }else{
 		Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
 		if($locationProvider.path() == "/" || $locationProvider.path()=="/home"){
-			$scope.board = Board.get({id: "25"});
+			$scope.board = Board.get({id: "23"});
 		}else{
 			$scope.board = Board.get({id: $routeParams.id});
 		}
+		
+		
+		var ctrl=this;
+		
+		$scope.sendComment = function(){
+		
+		    console.log('commentario nuevo: ' + ctrl.newComment);
+		    alert( localStorage.getItem('tokenSeguridad'));
+		    alert(ctrl.newComment);
+		    alert(ctrl.noteID2);
+		    OtherOperations.addComment(ctrl.newComment, ctrl.noteID2)
+		    .then(function(){ 
+		      $scope.mensaje = ''; //reset error message
+		  
+		      
+		     alert("exito al agregar comment?");
+		  	/*Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
+			{
+				$scope.board = Board.get({id: ctrl.boardID});
+		    }*/
+		    })
+		    .catch(function(){
+		      $scope.mensaje = 'No se pudo agregar el comentario';
+		    });
+		    
+		  }
+		
+		
      }
 		
 		
-	
+
 	
 	//alert("notas ");
 	//alert("listas "+$scope.boards)

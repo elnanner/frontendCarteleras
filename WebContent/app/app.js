@@ -68,7 +68,7 @@ app.controller('mainController', function($scope){
 
 });
 
-app.run(['$rootScope', '$location','LoginService','UserService', function ($rootScope, $locationProvider, LoginService, UserService) {
+app.run(['$rootScope', '$location','LoginService','UserService','OtherOperations', function ($rootScope, $locationProvider, LoginService, UserService,OtherOperations) {
 
 		$rootScope.userGlobal =null;
 		$rootScope.userPerfil =null;
