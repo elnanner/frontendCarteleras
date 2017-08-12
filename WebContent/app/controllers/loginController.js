@@ -33,6 +33,19 @@ app.controller('loginController',['$scope','$location', '$rootScope', 'LoginServ
 	    .catch(function(){
 	      $scope.mensaje = 'Usuario o contrase\u00f1a inv\u00E1lidos. Por favor, vuelva a intentarlo';
 	    });
+	    
+	  }
+	  
+	  //logout
+	  $scope.logout = function(){
+		  	alert("logout");
+		    LoginService.logout()
+		    .then(function(){
+		    	console.log('usuario deslogueado');
+		    	$rootScope.userPerfil = null;
+		    	$rootScope.userGlobal = null;
+		    });
+		    $locationProvider.url('/');
 	  }
 	}]);
  

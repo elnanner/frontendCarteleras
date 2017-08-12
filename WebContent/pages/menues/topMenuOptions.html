@@ -77,7 +77,13 @@
 	
 	<ul class="nav navbar-nav navbar-right" ng-if="userGlobal!=null">						
                     	<li><a href="">{{userPerfil.name}} </a></li>
-                    	<li><a href="#/logout">Logout</a></li>
+                    	<li>
+                    		<div ng-controller="loginController">
+		                    	<form ng-submit="logout()">
+		                    		<input type="submit" class="btn btn-danger" value="Logout"/>
+		                    	</form>
+	                    	</div>
+	                    </li>
                     	<li> <a href="#/alta"> <span class="glyphicon glyphicon-edit"></span></a><!-- hacer config -->                            
 	</ul>
 
