@@ -36,8 +36,10 @@
    <div ng-if="userPerfil.type==='alu'" ng-controller="boardController as $BDC">
    		<form ng-submit="sendComment()" id="formAddComment" name="formAddComment">
 						<input placeholder="Escribe un comentario..." type="text" style="height: 100px" class="form-control"  ng-model="$BDC.newComment" required/>
-						<input type="hidden" ng-model="$BDC.noteID" value={{note.id}} required/>
-						<input type="text" ng-model="$BDC.noteID2" ng-init="noteID2='{{note.id}}'" value="44" required/>
+						<input type="hidden" ng-model="$BDC.noteID1" value={{note.id}} required/>
+						
+						<input type="hidden" ng-model="$BDC.noteID" name="noteID" value={{note.id}}/> <!--  <script>noteID={{note.id}};</script>-->
+						
 						<h1>You entered: {{newComment}} {{note.id}}  {{ $BDC.noteID2}}</h1>
 						
 						<button ng-if="userPerfil.type==='alu'" type="submit" class="btn btn-primary" >Comentar</button>

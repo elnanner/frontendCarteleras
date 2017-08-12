@@ -60,8 +60,9 @@ app.controller('boardController',['$scope', '$resource','$location', '$routePara
 		    console.log('commentario nuevo: ' + ctrl.newComment);
 		    alert( localStorage.getItem('tokenSeguridad'));
 		    alert(ctrl.newComment);
-		    alert(ctrl.noteID2);
-		    OtherOperations.addComment(ctrl.newComment, ctrl.noteID2)
+		    alert(ctrl.noteID);
+		    alert(ctrl.i);
+		    OtherOperations.addComment(ctrl.newComment, ctrl.noteID)//ctrl.noteID)
 		    .then(function(){ 
 		      $scope.mensaje = ''; //reset error message
 		  
