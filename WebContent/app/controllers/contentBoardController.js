@@ -47,7 +47,7 @@ app.controller('boardController',['$scope', '$resource','$location', '$routePara
 //     }else{
 		Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
 		if($locationProvider.path() == "/" || $locationProvider.path()=="/home"){
-			$scope.board = Board.get({id: "25"});
+			$scope.board = Board.get({id: "23"});
 			console.log($scope.board);//alert($scope.board['id']);
 			
 		}else{
@@ -61,33 +61,47 @@ app.controller('boardController',['$scope', '$resource','$location', '$routePara
 			$scope.token="false";
 		}
 		
-		
-		
-		var ctrl=this;
-		
-		$scope.sendComment = function(){
-		
-		    console.log('commentario nuevo: ' + ctrl.newComment);
-		    alert( localStorage.getItem('tokenSeguridad'));
-		    alert(ctrl.newComment);
-		    alert(ctrl.noteID);
-		    alert(ctrl.i);
-		    OtherOperations.addComment(ctrl.newComment, ctrl.noteID)//ctrl.noteID)
+		$scope.sendComment = function(boardId, noteId, texto){
+			console.log('boardId: '+boardId+' con note id: '+noteId+" y texto a enviar: "+texto);
+			console.log('commentario nuevo: ' + texto);
+
+		    OtherOperations.addComment(texto, noteId)
 		    .then(function(){ 
-		      $scope.mensaje = ''; //reset error message
+		    	$scope.mensaje = ''; //reset error message
 		   
 		      
-		     alert("exito al agregar comment?");
-		  	/*Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
-			{
-				$scope.board = Board.get({id: ctrl.boardID});
-		    }*/
+			    alert("exito al agregar comment?");
+			  	Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
+				{
+					$scope.board = Board.get({'id': boardId});
+			    }
 		    })
 		    .catch(function(){
 		      $scope.mensaje = 'No se pudo agregar el comentario';
 		    });
 		    
-		  }
+		};
+//		$scope.alertar = function(id, texto){
+//			alert('id: '+id+' tiene texto: '+texto);
+//		}
+		/*$scope.texto='';
+		$scope.alertar = function(id, texto){
+			alert('id: '+id+' tiene texto: '+texto);
+			OtherOperations.addComment(texto, id)//ctrl.noteID)
+		    .then(function(){ 
+		      $scope.mensaje = ''; //reset error message
+		      
+		      alert("exito al agregar comment?");
+		  	Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
+			{
+				$scope.board = Board.get({id: ctrl.boardID});
+		    }
+		    })
+		    .catch(function(){
+		      $scope.mensaje = 'No se pudo agregar el comentario';
+		    });
+	      
+		}*/
 		
 		
      }
