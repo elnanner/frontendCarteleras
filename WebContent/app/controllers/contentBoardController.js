@@ -48,10 +48,11 @@ app.controller('boardController',['$scope', '$resource','$location', '$routePara
 		Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
 		if($locationProvider.path() == "/" || $locationProvider.path()=="/home"){
 			$scope.board = Board.get({id: "23"});
-			
+			console.log($scope.board);//alert($scope.board['id']);
 			
 		}else{
 			$scope.board = Board.get({id: $routeParams.id});
+			console.log($scope.board);
 		
 		}
 		if(localStorage.getItem('tokenSeguridad')!=undefined){

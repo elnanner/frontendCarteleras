@@ -1,5 +1,5 @@
 <div class="container">
-	<div ng-repeat="note in board.noteList" ng-controller="boardController as $BDC">
+	<div ng-repeat="note in board.noteList"><!--  ng-controller="boardController as $BDC" -->
    		<div class="col-md-4 portfolio-item"> 
    		<a data-toggle="modal" data-target="#myModal">
 		{{note.title}}</a>
