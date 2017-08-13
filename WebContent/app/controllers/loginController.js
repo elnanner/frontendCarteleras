@@ -18,16 +18,16 @@ var app=angular.module('app').controller('loginController', function ($scope){
 app.controller('loginController',['$scope','$location', '$rootScope', 'LoginService','$route',function($scope,$locationProvider,$rootScope, LoginService,$route){
 	
 	$scope.mensaje = '';
-	$rootScope.userPerfil='';
+	//$rootScope.userPerfil='';
 	  $scope.login = function(){
 	    console.log('Usuario: ' + $scope.userNameLogin);
 	    console.log('Password: ' + $scope.passLogin);
 
 	    LoginService.login($scope.userNameLogin, $scope.passLogin,$rootScope)
-	    .then(function(data){
+	    .then(function(){
 	      $scope.mensaje = ''; //reset error message
 	      $rootScope.userGlobal="logged";
-	      $rootScope.userPerfil=data.profile;
+	      //$rootScope.userPerfil=data.profile.type;
 	      
 	      $locationProvider.path('/');
 	    })
