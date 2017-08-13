@@ -47,10 +47,19 @@ app.controller('boardController',['$scope', '$resource','$location', '$routePara
 //     }else{
 		Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
 		if($locationProvider.path() == "/" || $locationProvider.path()=="/home"){
-			$scope.board = Board.get({id: "25"});
+			$scope.board = Board.get({id: "23"});
+			
+			
 		}else{
 			$scope.board = Board.get({id: $routeParams.id});
+		
 		}
+		if(localStorage.getItem('tokenSeguridad')!=undefined){
+			$scope.token="true";
+		}else{
+			$scope.token="false";
+		}
+		
 		
 		
 		var ctrl=this;
@@ -65,7 +74,7 @@ app.controller('boardController',['$scope', '$resource','$location', '$routePara
 		    OtherOperations.addComment(ctrl.newComment, ctrl.noteID)//ctrl.noteID)
 		    .then(function(){ 
 		      $scope.mensaje = ''; //reset error message
-		  
+		   
 		      
 		     alert("exito al agregar comment?");
 		  	/*Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});

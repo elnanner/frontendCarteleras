@@ -15,7 +15,7 @@ var app=angular.module('app').controller('loginController', function ($scope){
 
 
 
-app.controller('loginController',['$scope','$location', '$rootScope', 'LoginService',function($scope,$locationProvider,$rootScope, LoginService){
+app.controller('loginController',['$scope','$location', '$rootScope', 'LoginService','$route',function($scope,$locationProvider,$rootScope, LoginService,$route){
 	
 	$scope.mensaje = '';
 	$rootScope.userPerfil='';
@@ -24,9 +24,10 @@ app.controller('loginController',['$scope','$location', '$rootScope', 'LoginServ
 	    console.log('Password: ' + $scope.passLogin);
 
 	    LoginService.login($scope.userNameLogin, $scope.passLogin,$rootScope)
-	    .then(function(){
+	    .then(function(data){
 	      $scope.mensaje = ''; //reset error message
 	      $rootScope.userGlobal="logged";
+	      $rootScope.userPerfil=data.profile;
 	      
 	      $locationProvider.path('/');
 	    })
@@ -46,6 +47,7 @@ app.controller('loginController',['$scope','$location', '$rootScope', 'LoginServ
 		    	$rootScope.userGlobal = null;
 		    });
 		    $locationProvider.url('/');
+		    $route.reload();
 	  }
 	}]);
  

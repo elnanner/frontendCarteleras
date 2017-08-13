@@ -1,59 +1,45 @@
 <div class="container">
-<div ng-repeat="note in board.noteList">
-   <div class="col-md-4 portfolio-item">
-   
-     
-   <a data-toggle="modal" data-target="#myModal">
+	<div ng-repeat="note in board.noteList" ng-controller="boardController as $BDC">
+   		<div class="col-md-4 portfolio-item"> 
+   		<a data-toggle="modal" data-target="#myModal">
 		{{note.title}}</a>
-	<img data-toggle="modal" data-target="#myModal" class="img-responsive" src="./images/papel.jpg" width="700" height="400" alt="" title="{{note.title}}">
-   <div id="myModal" class="modal fade" >
-	  <div class="modal-document" role="document">
-   
-   
-    <div class="page-header">
-    <button type="button" class="close" data-dismiss="modal">&times;</button>
-    <h1 id="timeline" class="gris">{{note.title}}</h1>
-    <h3> {{note.publish}}</h3>
-  </div>
-  <ul class="timeline" ng-repeat="comment in note.comments">
-  
-
-  		<li >
-  			<div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
-      		<div class="timeline-panel">
-        			<div class="timeline-heading">
-          				<h4 class="timeline-title">{{comment.author.name}} dijo: </h4>
-          				<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> fecha: {{comment.commentDate}}</small></p>
-       				</div>
-        		<div class="timeline-body">
-          				<p> {{comment.text}} </p>
-          				 
-        		</div>
-      		</div>
-      </li>
-        
-      </ul>
-   <div ng-if="userPerfil.type==='alu'" ng-controller="boardController as $BDC">
-   		<form ng-submit="sendComment()" id="formAddComment" name="formAddComment">
+		<img data-toggle="modal" data-target="#myModal" class="img-responsive" src="./images/papel.jpg" width="700" height="400" alt="" title="{{note.title}}">
+   		<div id="myModal" class="modal fade" >
+	  		<div class="modal-document" role="document">
+   				<div class="page-header">
+    				<button type="button" class="close" data-dismiss="modal">&times;</button>
+    				<h1 id="timeline" class="gris">{{note.title}}rrrrr</h1>
+   	 				<h3> {{note.publish}}</h3>
+  				</div>
+  				<ul class="timeline" >
+  					<li ng-repeat="comment in note.comments">
+  						<div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+      					<div class="timeline-panel">
+        					<div class="timeline-heading">
+          						<h4 class="timeline-title">{{comment.author.name}} dijo: </h4>
+          						<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> fecha: {{comment.commentDate}}</small></p>
+       						</div>
+        				<div class="timeline-body">
+          					<p> {{comment.text}} </p>		 
+        				</div>
+      					</div>
+      				</li>
+      				
+      			</ul>
+   				<div  ng-if="token=='true'"  > 
+   					<form ng-submit="sendComment()" id="formAddComment" name="formAddComment">
 						<input placeholder="Escribe un comentario..." type="text" style="height: 100px" class="form-control"  ng-model="$BDC.newComment" required/>
-						<input type="hidden" ng-model="$BDC.noteID1" value={{note.id}} required/>
-						
-						<input type="hidden" ng-model="$BDC.noteID" name="noteID" value={{note.id}}/> <!--  <script>noteID={{note.id}};</script>-->
-						
-						<h1>You entered: {{newComment}} {{note.id}}  {{ $BDC.noteID2}}</h1>
-						
-						<button ng-if="userPerfil.type==='alu'" type="submit" class="btn btn-primary" >Comentar</button>
-						<span class="text-mute">Queremos
-							saber tu opini&oacute;n</span>
-		</form>
+						<input type="text" ng-model="$BDC.noteID" name="noteID" value={{note.id}} /> <!--  <script>noteID={{note.id}};</script>-->
+						<h1>You entered: {{newComment}} {{note.id}}</h1>
+						<button ng-if="token=='true'" type="submit" class="btn btn-primary" >Comentar</button>
+						<span class="text-mute">Queremos saber tu opini&oacute;n</span>
+					</form>
 					</div>
-    <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      </div>
-   </div>
-   </div>
-   
-   
-	</div> <!--  div col item --> 
+   				 <div class="modal-footer">
+	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      		</div>
+   			</div>
+   		</div>
+		</div> <!--  div col item --> 
 	</div>
-	</div>
+</div>

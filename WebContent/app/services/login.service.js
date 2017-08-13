@@ -39,7 +39,7 @@ angular.module('app')
     // invalido el token
     localStorage.removeItem('tokenSeguridad');
     defer.resolve();
-
+    
     return defer.promise;
   };
 
