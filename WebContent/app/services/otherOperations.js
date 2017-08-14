@@ -10,7 +10,7 @@ angular.module('app')
   
   var addComment = function(comment, noteID) {
     var defer = $q.defer();
-    alert(" en el servicio el id es... "+noteID);
+   // alert(" en el servicio el id es... "+noteID);
     var t=localStorage.getItem('tokenSeguridad');
     $http.post('http://localhost:8080/backendCarteleras/addComment/',
     {

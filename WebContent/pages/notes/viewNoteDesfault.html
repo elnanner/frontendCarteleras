@@ -32,14 +32,14 @@
       					<div  ng-if="token=='true'"  > 
 		   					<form ng-submit="sendComment($parent.board.id, note.id, commentText)" id="formAddComment" name="formAddComment">
 								<input placeholder="Escribe un comentario..." type="text" style="height: 100px" class="form-control" ng-model="commentText" required/>
-								<h1>You entered: {{commentText}} {{note.id}}</h1>
-								<input ng-if="token=='true'" type="submit" class="btn btn-primary" value ="Comentar"/>
+								
+								<input id="saraza" ng-if="token=='true'" type="submit" class="btn btn-primary" value ="Comentar"/>
 								<span class="text-mute">Queremos saber tu opini&oacute;n</span>
 								
 							</form>
 						</div>
 		   				<div class="modal-footer">
-			        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        		<button type="button" class="btn btn-default" id='btnCloseModal' data-dismiss="modal">Close</button>
 			      		</div>
       					
 					</div>
