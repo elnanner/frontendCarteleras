@@ -46,6 +46,10 @@ angular.module('app')
 	    	templateUrl: 'pages/userOperations/listBoards.html',
 	    	controller: 'listController'
 	    })
+	    .when('/addBoard', {
+	    	templateUrl: 'pages/userOperations/addBoard.html',
+	    	controller: 'boardController'
+	    })
 	    
 	    
         

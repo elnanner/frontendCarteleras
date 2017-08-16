@@ -1,5 +1,5 @@
 
-app.controller('boardController',['$scope', '$resource','$location', '$routeParams', 'OtherOperations', function($scope, $resource,$locationProvider, $routeParams, OtherOperations){
+app.controller('boardController',['$scope', 'Board', '$resource','$location', '$routeParams', 'OtherOperations', function($scope, Board, $resource, $locationProvider, $routeParams, OtherOperations){
 	//si no estas logeuado vas al login pero podes ver el home 
 //	if (!LoginService.isLoggedIn()) {//si el usuario no esta logueado
 //         //alert('Denegar');
@@ -7,7 +7,7 @@ app.controller('boardController',['$scope', '$resource','$location', '$routePara
 //         //$state.go('login');
 //         $locationProvider.path('/login')
 //     }else{
-		Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
+		//Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
 		if($locationProvider.path() == "/" || $locationProvider.path()=="/home"){
 			$scope.board = Board.get({id: "23"});
 			console.log($scope.board);//alert($scope.board['id']);
@@ -32,10 +32,11 @@ app.controller('boardController',['$scope', '$resource','$location', '$routePara
 		    	$scope.mensaje = ''; //reset error message
 		    			      
 			    //alert("exito al agregar comment?");
-			  	Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
-				{
-					$scope.board = Board.get({'id': boardId});
-			    }
+//			  	Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
+//				{
+//					$scope.board = Board.get({'id': boardId});
+//			    }
+		    	$scope.board = Board.get({'id': boardId});
 				//esto esta re mal pero bueh
 			    $("#btnCloseModal").click();
 		    })
@@ -45,6 +46,10 @@ app.controller('boardController',['$scope', '$resource','$location', '$routePara
 		    
 		};
 
+		//code for addBoard
+		//probe de obtener el listado de boards para usar en un select pero no me deja, me dice error se esperaba un objeto
+		// y se trajo un array 
+		//$scope.boards = Board.query();
 		
      }
 		
