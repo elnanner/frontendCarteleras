@@ -1,7 +1,8 @@
 'use strict';
 angular.module('app')
 .factory('Board',function($resource){
-	var resource =$resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});	
+	var resource =$resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
+	var resourceSave = $resource("http://localhost:8080/backendCarteleras/createBoard/");
 	
 	var listar = function(){
 		return resource.query();
@@ -11,8 +12,13 @@ angular.module('app')
 		return resource.get({id: id});
 	}
 	
+	var guardar = function(data){
+		return resourceSave.save({},data);
+	}
+	
 	return{
 		list: listar,
-		get: obtener
+		get: obtener,
+		save: guardar
 	}
 })

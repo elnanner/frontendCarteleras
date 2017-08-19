@@ -46,11 +46,14 @@ angular.module('app')
 	    	templateUrl: 'pages/userOperations/listBoards.html',
 	    	controller: 'listController'
 	    })
-	    .when('/addBoard', {
+	    .when('/board/addBoard', {
 	    	templateUrl: 'pages/userOperations/addBoard.html',
 	    	controller: 'boardController'
 	    })
-	    
+	    .when('/board/addBoard/:id', {
+	    	templateUrl: 'pages/userOperations/addBoard.html',
+	    	controller: 'boardController'
+	    })
 	    
         
         //FIN OJO

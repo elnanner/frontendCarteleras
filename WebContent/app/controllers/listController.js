@@ -1,6 +1,7 @@
 var app = angular.module("app");//obtenemos la el modulo para poder usarlo
-app.controller('listController', function($scope, $resource, $location, $http, $route){
-
+app.controller('listController', 
+		['$scope', '$resource', '$location', '$http', '$route', 'Board', function($scope, $resource, $location, $http, $route, Board){
+	
 		//Board = $resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
 	//	if($locationProvider.path() == "/" || $locationProvider.path()=="/home"){
 //			$scope.board = Board.get({id: "25"});
@@ -10,9 +11,11 @@ app.controller('listController', function($scope, $resource, $location, $http, $
 	$http({
 	    method: 'GET', 
 	    url: 'http://localhost:8080/backendCarteleras/users'
-	  }).success(function(data, status, headers, config) {
+	  })
+	  .success(function(data, status, headers, config) {
 	      $scope.users=data;
-	  }).error(function(data, status, headers, config) {
+	  })
+	  .error(function(data, status, headers, config) {
 	      alert("Ha fallado la petición. Estado HTTP:"+status);
 	  });
 		
@@ -32,6 +35,13 @@ app.controller('listController', function($scope, $resource, $location, $http, $
 			}
 		)
 	}
+	
+	$scope.boards = Board.list();
+	$scope.saveBoard = function(idFatherBoard, name, description){
+		alert("pizarra: "+idFatherBoard+' con titulo: '+name+' tiene descripcion: '+description);
+		var data = {'idFatherBoard': idFatherBoard, 'name': name, 'description': description};
+		Board.save(data);
+	}
 
-});
+}]);
 

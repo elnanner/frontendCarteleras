@@ -1,112 +1,128 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	
-     
-    
-    <title>Listado carteleras</title>
-</head>
-
-<body>
-
-<!-- <%@ include file="Header.jsp" %> -->
-<script>
-function eliminar(){
-	/*lo queres mas lindo???*/
-	$("#fila").remove();
-	$("#output").removeClass(' alert alert-success');
-	//alert($("#a").data("data-custom-value"));
-	$("#output").addClass("alert alert-danger animated fadeInUp").html("borrar cartelera "); //buscar como sacar valor del a
-}; 
-</script>
-
 
 <!-- Page Content -->
-<div ng-controller="listController">
-    <div class="container">
-     <div id="output"></div>
+<div class="container">
+    <div id="output"></div>
     
-<h1 style="text-align:center"> Listado carteleras</h1>
+	<h1 style="text-align:center"> Listado carteleras</h1>
  
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Descripci�n</th>
-      <th>Operaciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr id="fila">
-      <td>Materias</td>
-      <td>Informaci�n sobre materias</td>
-       <td> 
-       <div>
-          <a href="#/addBoard">
-          <span class="glyphicon glyphicon-plus"></span>
-        </a>
-         </div>
-        <div>  
-         </div>
-          <a href="ModificarCartelera.jsp">
-          <span class="glyphicon glyphicon-cog"></span>
-        </a>
-         <div>  
-            
-           <a href="#" onclick="eliminar()" data-custom-value="Materias">
-          <span class="glyphicon glyphicon-trash"></span>
-        </a>
-         </div>
-      </td>
-    </tr>
-    <tr id="fila">
-      <td>Ofertas laborales</td>
-      <td>Informaci�n sobre ofertas laborales</td>
-       <td> 
-          <div>
-          <a href="#/addBoard">
-          <span class="glyphicon glyphicon-plus"></span>
-        </a>
-        </div>
-        <div>  
-          <a href="ModificarCartelera.jsp">
-          <span class="glyphicon glyphicon-cog"></span>
-        </a>
-        </div>
-        <div>
-           <a href="#" onclick="eliminar()" data-custom-value="Ofertas">
-          <span class="glyphicon glyphicon-trash"></span>
-        </a>
-        </div>
-      </td>
-    </tr>
-    <tr id="fila">
-      <td>Otros</td>
-      <td>Informaci�n que no se encuentra en el resto de las carteleras</td>
-      <td> 
-      <div>
-          <a href="#/addBoard">
-          <span class="glyphicon glyphicon-plus"></span>
-        </a>       
-          </div>
-          <div>
-          <a href="ModificarCartelera.jsp">
-          <span class="glyphicon glyphicon-cog"></span>
-        </a>
-           </div>
-           <div>
-           <a href="#" onclick="eliminar()" data-custom-value="Otros">
-          <span class="glyphicon glyphicon-trash"></span>
-        </a>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th>Nombre</th>
+	      <th>Descripci&oacute;n</th>
+	      <th>Operaciones</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr id="fila" ng-repeat="board in boards | orderBy:'name'">
+	      <td>{{board.name}}</td>
+	      <td>{{board.description}}</td>
+	       <td> 
+	       <div>
+	          <!-- <a href="#/board/addBoard/{{board.id}}">
+	          <span class="glyphicon glyphicon-plus"></span>
+	        </a> -->
+	        
+	        <!-- ///// -->
+	        
+				<a style="cursor:pointer" data-toggle="modal" data-target="#myModal{{board.id}}">
+		          <span class="glyphicon glyphicon-plus"></span>
+		        </a> 
+				<ng-include src="'./pages/userOperations/addBoard.html'"></ng-include>
+
+				<!-- <div id="myModal{{board.id}}" class="modal fade" role="content">
+					<div class="modal-content" >
+					
+						<div class="modal-header">
+    						<button type="button" class="close" data-dismiss="modal">&times;</button>
+    						<h1 id="timeline" class="gris">{{board.name}}</h1>
+   	 						<h3> {{board.description}}</h3>
+  						</div>
+  						
+					    <div class="modal-body">			
+     					<div  ng-if="token=='true'"  > 
+		   					<form ng-submit="saveBoard(board.id, boardTitle, boardDescription)" id="" name="">
+								<div class="form-group">
+									<p>Cartelera Padre: {{board.name}}</p>
+									implementar!
+									<p>T&iacute;tulo para nueva pizarra:</p>
+									<input type="text" ng-model="boardTitle" class="form-control" id="" placeholder="T&iacute;tulo nueva pizarra"  name="" required>
+								
+									<p>Descripción:</p>
+									<input type="text" ng-model="boardDescription" class="form-control" id="descrip" placeholder="Breve descripción de la cartelera"  name="descripcion" required>
+								
+								</div>
+								<input type="submit" value="Guardar" class="btn btn-primary" />
+							</form>
+						</div> 
+						</div>	
+						
+		   				<div class="modal-footer">
+			        		<button type="button" class="btn btn-default" id='btnCloseModal' data-dismiss="modal">Close</button>
+			      		</div>
+      					
+					</div>
+				</div>
+			</div> -->
+	        <!-- ////// -->
+	   
+	        
+	         </div>
+	          <a href="ModificarCartelera.jsp">
+	          <span class="glyphicon glyphicon-cog"></span>
+	        </a>
+	         <div>  
+	            
+	           <a href="#" onclick="eliminar()" data-custom-value="Materias">
+	          <span class="glyphicon glyphicon-trash"></span>
+	        </a>
+	         </div>
+	      </td>
+	    </tr>
+	    <tr id="fila">
+	      <td>Ofertas laborales</td>
+	      <td>Informaci&oacute;n sobre ofertas laborales</td>
+	       <td> 
+	          <div>
+	          <a href="#/board/addBoard">
+	          <span class="glyphicon glyphicon-plus"></span>
+	        </a>
+	        </div>
+	        <div>  
+	          <a href="ModificarCartelera.jsp">
+	          <span class="glyphicon glyphicon-cog"></span>
+	        </a>
+	        </div>
+	        <div>
+	           <a href="#" onclick="eliminar()" data-custom-value="Ofertas">
+	          <span class="glyphicon glyphicon-trash"></span>
+	        </a>
+	        </div>
+	      </td>
+	    </tr>
+	    <tr id="fila">
+	      <td>Otros</td>
+	      <td>Informaci&oacute;n que no se encuentra en el resto de las carteleras</td>
+	      <td> 
+	      <div>
+	          <a href="#/board/addBoard">
+	          <span class="glyphicon glyphicon-plus"></span>
+	        </a>       
+	          </div>
+	          <div>
+	          <a href="ModificarCartelera.jsp">
+	          <span class="glyphicon glyphicon-cog"></span>
+	        </a>
+	           </div>
+	           <div>
+	           <a href="#" onclick="eliminar()" data-custom-value="Otros">
+	          <span class="glyphicon glyphicon-trash"></span>
+	        </a>
+	        </div>
+	      </td>
+	    </tr>
+	  </tbody>
+	</table>
 </div>
 <!--  <%@include file="Footer.jsp" %>-->
 
-</div>
-</body>
-
-</html>
