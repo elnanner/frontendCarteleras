@@ -13,7 +13,7 @@ app.controller('boardController',['$scope', 'Board', '$resource','$location', '$
 			console.log($scope.board);//alert($scope.board['id']);
 
 		}else{
-			$scope.board = Board.get({id: $routeParams.id});
+			$scope.board = Board.get($routeParams.id);
 			console.log($scope.board);
 
 		}
