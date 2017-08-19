@@ -26,7 +26,7 @@ app.controller('listController',
 		$http({
 			url: "http://localhost:8080/backendCarteleras/deleteUser",
 			method: "DELETE",
-			data: {idUser: id},
+			data: {idUser: id, token: localStorage.getItem('tokenSeguridad')},
 			headers: {"Content-Type": "application/json"}
 		}).then(//si todo fue correcto
 			function(respuesta){
