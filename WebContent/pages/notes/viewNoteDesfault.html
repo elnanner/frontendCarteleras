@@ -10,13 +10,29 @@
 					
 						<div class="page-header">
     						<button type="button" class="close" data-dismiss="modal">&times;</button>
-    						<h1 id="timeline" class="gris">{{note.title}}rrrrr</h1>
+    						<h1 id="timeline" class="gris">{{note.title}}</h1>
    	 						<h3> {{note.publish}}</h3>
   						</div>
   						<ul class="timeline" >
-		  					<li ng-repeat="comment in note.comments">
-		  						<div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
-		      					<div class="timeline-panel">
+		  					<li ng-repeat="comment in note.comments" ng-class="{'timeline-inverted': comment.author.id!=note.author.id}">
+		  					
+		  					
+		  					    
+		  						<div  ng-if="comment.author.id!=note.author.id" class="timeline-badge"><i class="glyphicon glyphicon-user"></i></div> <!-- glyphicon glyphicon-check -->
+		      					<div  ng-if="comment.author.id!=note.author.id" class="timeline-panel">
+		        					<div class="timeline-heading">
+		          						<h4 class="timeline-title">{{comment.author.name}} dijo: </h4>
+		          						<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> fecha: {{comment.commentDate}}</small></p>
+		       						</div>
+		        				<div class="timeline-body">
+		          					<p> {{comment.text}}</p>		 
+		        				</div>
+		      					</div>
+		      					
+		      					
+		      					
+		      					<div   ng-if="comment.author.id==note.author.id" class="timeline-badge"><i class="glyphicon glyphicon-star-empty"></i></div> <!-- glyphicon glyphicon-check -->
+		      					<div ng-if="comment.author.id==note.author.id" class="timeline-panel">
 		        					<div class="timeline-heading">
 		          						<h4 class="timeline-title">{{comment.author.name}} dijo: </h4>
 		          						<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> fecha: {{comment.commentDate}}</small></p>
@@ -25,6 +41,8 @@
 		          					<p> {{comment.text}} </p>		 
 		        				</div>
 		      					</div>
+		      					
+		      					
 		      				</li>
       				
       					</ul>
