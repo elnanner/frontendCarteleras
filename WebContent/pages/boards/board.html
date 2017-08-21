@@ -16,7 +16,7 @@
 			
 	<div ng-if="board.boardList.lenght != 0">		 
     <div ng-repeat="subBoard in board.boardList">
-   		 <div class="col-md-4 portfolio-item">
+   		 <div class="col-md-4 portfolio-item" ng-show="subBoard.down==0">
       		<a ng-href='#/boards/{{subBoard.id}}'> 
 			<img class="img-responsive" src="./images/cartelera.jpg" width="700" height="400" alt="">
 	
