@@ -54,6 +54,8 @@ app.controller('boardController',['$scope', 'Board', '$resource','$location', '$
 		
 		//listado de boards para el select
 		$scope.boardSelectList = Board.list();
+		
+		
      }
 
 

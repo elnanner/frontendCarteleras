@@ -35,12 +35,27 @@ app.controller('listController',
 			}
 		)
 	}
-	
+	//litsa pizarras
 	$scope.boards = Board.list();
+	
+	//guarda una pizarra
 	$scope.saveBoard = function(idFatherBoard, name, description){
 		alert("pizarra: "+idFatherBoard+' con titulo: '+name+' tiene descripcion: '+description);
 		var data = {'idFatherBoard': idFatherBoard, 'name': name, 'description': description};
 		Board.save(data);
+		$route.reload();//recarga la página
+	}
+	
+	//borrado de carteleras
+	$scope.deleteBoard = function(idBoard){
+		var result = confirm("¿Está seguro que quiere borrar la pizarra? ");
+		if(result){
+			
+			Board.remove(idBoard);
+			$route.reload();//recarga la página 	
+			alert('borrado exitoso');
+			
+		}
 	}
 
 }]);

@@ -73,9 +73,12 @@
 	        </a>
 	         <div>  
 	            
-	           <a href="#" onclick="eliminar()" data-custom-value="Materias">
+	           <!-- <a href="#" onclick="eliminar()" data-custom-value="Materias">
 	          <span class="glyphicon glyphicon-trash"></span>
-	        </a>
+	        </a> -->
+	        	<a style="cursor:pointer" ng-click="deleteBoard(board.id)">
+		          <span class="glyphicon glyphicon-trash"></span>
+		        </a> 
 	         </div>
 	      </td>
 	    </tr>
