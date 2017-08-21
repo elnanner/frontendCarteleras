@@ -43,6 +43,7 @@ app.controller('listController',
 		alert("pizarra: "+idFatherBoard+' con titulo: '+name+' tiene descripcion: '+description);
 		var data = {'idFatherBoard': idFatherBoard, 'name': name, 'description': description};
 		Board.save(data);
+		$('#btnModalClose').trigger('click');//cierra el modal
 		$route.reload();//recarga la página
 	}
 	
@@ -52,8 +53,11 @@ app.controller('listController',
 		if(result){
 			
 			Board.remove(idBoard);
-			$route.reload();//recarga la página 	
-			alert('borrado exitoso');
+			$route.reload();//recarga la página
+			setTimeout(() => {
+				alert('borrado exitoso');
+			}, 1000);
+			
 			
 		}
 	}
