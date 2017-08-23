@@ -1,6 +1,6 @@
 'use strict';
 angular.module('app')
-.factory('LoginService', function( $http, $q){
+.factory('LoginService', function( $http, $q, $cookies){
 
   var config = {
     headers : {
@@ -19,11 +19,14 @@ angular.module('app')
       console.log('El login responde: ');
       console.log(data);
       localStorage.setItem('tokenSeguridad', data.token.token);
+      $cookies.put('userGlobal', 'logged')
+      $cookies.put('userPerfil', data.profile.type);
+      
       defer.resolve(data);
       //alert(JSON.stringify(data.token));
       //alert(data.token.token);
       //alert(JSON.stringify(data.profile)); 
-      rootScope.userPerfil=data.profile;
+      //rootScope.userPerfil=data;
       
       //alert(jwt_decode(data.token));
      // alert(jwtHelper.decodeToken(data.token));
@@ -38,6 +41,8 @@ angular.module('app')
     var defer = $q.defer();
     // invalido el token
     localStorage.removeItem('tokenSeguridad');
+    $cookies.put('userPerfil', '');
+    $cookies.put('userGlobal', '');
     defer.resolve();
     
     return defer.promise;

@@ -4,13 +4,13 @@
 	<ul class="nav navbar-nav">						
 	  <!--  todos tienen el link el home -->
 	 <li><a ng-href='#/home'>Home</a></li>
-     <li ng-if="userGlobal==null"><a  href="#/login"><i class="fa fa-shield"></i> Login</a></li>
+     <li ng-show="userGlobal==undefined"><a  href="#/login"><i class="fa fa-shield"></i> Login</a></li>
     <!--  <li ng-if="userGlobal!=null"><a  href="#logout"><i class="fa fa-shield"></i> Logout</a></li> -->
      <!-- <li><a ng-href="#/alta"><i class="fa fa-comment"></i> Alta</a></li> -->
 		
 		
 		<!--  admin menu -->
-		<li ng-if="userPerfil.type==='adm'" class="dropdown"><a href="" class="dropdown-toggle"
+		<li ng-if="userPerfil==='adm'" class="dropdown"><a href="" class="dropdown-toggle"
 	data-toggle="dropdown" role="button" aria-haspopup="true"
 	aria-expanded="false">Operaciones Admin <span class="caret"></span></a>
 	<ul class="dropdown-menu">
@@ -26,7 +26,7 @@
 		<!-- fin admin menu -->
 		
 			<!--  alu menu -->
-		<li ng-if="userPerfil.type==='alu'" class="dropdown"><a href="" class="dropdown-toggle"
+		<li ng-if="userPerfil==='alu'" class="dropdown"><a href="" class="dropdown-toggle"
 	data-toggle="dropdown" role="button" aria-haspopup="true"
 	aria-expanded="false">Operaciones Alumno <span class="caret"></span></a>
 	<ul class="dropdown-menu">
@@ -35,7 +35,7 @@
 		<!-- fin alu menu -->
 		
 		<!--  profesor menu -->
-		<li ng-if="userPerfil.type==='doc'" class="dropdown"><a href="" class="dropdown-toggle"
+		<li ng-if="userPerfil==='doc'" class="dropdown"><a href="" class="dropdown-toggle"
 	data-toggle="dropdown" role="button" aria-haspopup="true"
 	aria-expanded="false">Operaciones Docente <span class="caret"></span></a>
 	<ul class="dropdown-menu">
@@ -49,7 +49,7 @@
 		
 		
 			<!--  publicador menu -->
-		<li ng-if="userPerfil.type==='pub'" class="dropdown"><a href="" class="dropdown-toggle"
+		<li ng-if="userPerfil==='pub'" class="dropdown"><a href="" class="dropdown-toggle"
 	data-toggle="dropdown" role="button" aria-haspopup="true"
 	aria-expanded="false">Operaciones Publicador <span class="caret"></span></a>
 	<ul class="dropdown-menu">
@@ -62,7 +62,7 @@
 		
 		
 		<!--  administrative menu -->  <!-- ???????? -->
-			<li ng-if="userPerfil.type==='administrative'" class="dropdown"><a href="" class="dropdown-toggle"
+			<li ng-if="userPerfil==='administrative'" class="dropdown"><a href="" class="dropdown-toggle"
 	data-toggle="dropdown" role="button" aria-haspopup="true"
 	aria-expanded="false">Operaciones Administrativo <span class="caret"></span></a>
 	<ul class="dropdown-menu">
@@ -75,7 +75,7 @@
 		
 	</ul>
 	
-	<ul class="nav navbar-nav navbar-right" ng-if="userGlobal!=null">						
+	<ul class="nav navbar-nav navbar-right" ng-if="userGlobal!=undefined">						
                     	<li><a href="">{{userPerfil.name}} </a></li>
                     	<li>
                     		<div ng-controller="loginController">
