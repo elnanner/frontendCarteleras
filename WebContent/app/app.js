@@ -13,11 +13,11 @@ app.run(['$rootScope', '$location','LoginService','UserService','OtherOperations
 			console.log("ruta cambi\363 hacia: "+ next.originalPath+" usuario:"+$rootScope.userGlobal);
 			var logged = $cookies.get('userGlobal');
 			if(logged == 'logged'){
-				alert('usuario logueado');
+				//alert('usuario logueado');
 				$rootScope.userPerfil = $cookies.get('userPerfil');
 				$rootScope.userGlobal = $cookies.get('userGlobal');
 			}
-			alert($rootScope.userGlobal);
+			//alert($rootScope.userGlobal);
 			
 			
 		})
