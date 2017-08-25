@@ -42,9 +42,17 @@ angular.module('app')
 	    	templateUrl: 'pages/userOperations/listUsers.html',
 	    	controller: 'topMenuOptionController'
 	    })
-	     .when('/listBoard',{
+	    .when('/listBoard',{
 	    	templateUrl: 'pages/userOperations/listBoards.html',
 	    	controller: 'listController'
+	    })
+	    .when('/listAllPublish',{
+	    	templateUrl: 'pages/userOperations/listAllPublish.html',
+	    	controller: 'listController'
+	    })
+	    .when('/addNote',{
+	    	templateUrl: 'pages/notes/addNote.html',
+	    	controller: 'altaController'//en realidad habria uq ehacer un noteController, pero las altas por ahoa las meto aca
 	    })
 	    .when('/board/addBoard', {
 	    	templateUrl: 'pages/userOperations/addBoard.html',

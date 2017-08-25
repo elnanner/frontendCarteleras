@@ -86,4 +86,9 @@ app.controller("altaController", function($scope, $http, $location){
 		
 		
 	};
+	
+	/*Notes Section*/
+	$scope.addNote = function(){
+		alert('agregar nota');
+	}
 });

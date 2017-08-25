@@ -1,0 +1,50 @@
+
+	<h1 style="text-align:center">Alta Publicaci&oacute;n</h1>
+
+
+	<div class="container">
+	<!-- Formulario alta de publicación -->
+	<form ng-submit="addNote(idBoard)" method="GET">
+	  <div class="form-group">
+	    <label for="titulo">T&iacute;tulo </label>
+	    <input class="form-control" type="text" id="titulo">
+	    <p>T&iacute;tulo de la publicaci&oacute;n</p>
+	  </div>
+	  
+	  <div class="form-group">
+	    <label for="descripcion">Descripci&oacute;n </label>
+	    <input class="form-control" type="text" id="descripcion">
+	    <p>Descripci&oacuten de la publicaci&oacute;n</p>
+	  </div>
+	  
+  	  <div class="form-group">
+  	   <label for="texto">Texto</label>
+	    <textarea id="texto" class="form-control" rows="6" placeholder="texto de la publicacion"></textarea>
+	  </div>
+	  
+	  <div class="form-group">
+	    <label for="inputfile">Subir Archivo</label>
+	    <input class="form-control" type="file" id="inputfile">
+	    
+	  </div>
+	  <div class="checkbox">
+	  <label>
+      <input type="checkbox" value="1"> Deseo que se pueda comentar en esta publicaci&oacute;n
+    </label>
+    </div>
+    
+    <div class="form-group">
+    <label for="selectPizarra">Pizarra a la que pertenece la publicaci&oacute;n
+	 <select id="selectPizarra" required>
+  <option value="materias">Materias</option>
+  <option value="ofertas">Ofertas laborales</option>
+  <option value="otros">Otros</option>
+  <option value="perdidos">Perdidos</option>
+</select>
+</label>
+	 </div>
+   
+  
+  	<button type="submit" class="btn btn-success">Publicar</button>
+	</form>
+	</div>
