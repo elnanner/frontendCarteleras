@@ -46,7 +46,7 @@ $scope.saveUser = function(){
 	
 });*/
 var app = angular.module("app");//obtenemos la el modulo para poder usarlo
-app.controller("altaController", function($scope, $http, $location){
+app.controller("altaController", function($scope, $http, $location, Board){
 	$scope.createUser = function(){
 		alert(" createUser Nuevo");
 		/*var data={"user": $scope.name, "pass": $scope.pass, "mail": $scope.mail, "type": $scope.type};	
@@ -90,5 +90,10 @@ app.controller("altaController", function($scope, $http, $location){
 	/*Notes Section*/
 	$scope.addNote = function(){
 		alert('agregar nota');
+	}
+	
+	$scope.selectBoards = Board.list();
+	$scope.addNote = function(idBoardSelected, title, description, text){
+		alert('Los datos ingresados son:\n'+' nombre board: '+idBoardSelected.name+'\ntitulo: '+title+'\ndescripcion: '+description+'\npublicacion '+text );
 	}
 });

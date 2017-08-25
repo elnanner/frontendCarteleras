@@ -4,22 +4,22 @@
 
 	<div class="container">
 	<!-- Formulario alta de publicación -->
-	<form ng-submit="addNote(idBoard)" method="GET">
+	<form ng-submit="addNote(idBoardSelected, title, description, text)" method="GET">
 	  <div class="form-group">
 	    <label for="titulo">T&iacute;tulo </label>
-	    <input class="form-control" type="text" id="titulo">
+	    <input class="form-control" type="text" id="title" ng-model="title">
 	    <p>T&iacute;tulo de la publicaci&oacute;n</p>
 	  </div>
 	  
 	  <div class="form-group">
 	    <label for="descripcion">Descripci&oacute;n </label>
-	    <input class="form-control" type="text" id="descripcion">
+	    <input class="form-control" type="text" id="description" ng-model="description">
 	    <p>Descripci&oacuten de la publicaci&oacute;n</p>
 	  </div>
 	  
   	  <div class="form-group">
   	   <label for="texto">Texto</label>
-	    <textarea id="texto" class="form-control" rows="6" placeholder="texto de la publicacion"></textarea>
+	    <textarea id="text" ng-model="text" class="form-control" rows="6" placeholder="texto de la publicacion"></textarea>
 	  </div>
 	  
 	  <div class="form-group">
@@ -35,12 +35,8 @@
     
     <div class="form-group">
     <label for="selectPizarra">Pizarra a la que pertenece la publicaci&oacute;n
-	 <select id="selectPizarra" required>
-  <option value="materias">Materias</option>
-  <option value="ofertas">Ofertas laborales</option>
-  <option value="otros">Otros</option>
-  <option value="perdidos">Perdidos</option>
-</select>
+	 <select id="selectPizarra" ng-options="board as board.name for board in selectBoards track by board.id" ng-model="idBoardSelected" required>	
+	 </select>
 </label>
 	 </div>
    
