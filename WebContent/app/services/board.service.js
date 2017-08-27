@@ -4,6 +4,7 @@ angular.module('app')
 	var resource =$resource("http://localhost:8080/backendCarteleras/boards/:id",{id: "@id"});
 	var resourceSave = $resource("http://localhost:8080/backendCarteleras/createBoard/");
 	var resourceDelete = $resource("http://localhost:8080/backendCarteleras/deleteBoard/:id",{id: "@id"});
+	var resourceUpdate = $resource("http://localhost:8080/backendCarteleras/updateBoard/");
 	
 	var listar = function(){
 		return resource.query();
@@ -21,10 +22,15 @@ angular.module('app')
 		return resourceDelete.remove({id: id});
 	}
 	
+	var actualizar = function(data){
+		return resourceUpdate.save({}, data)
+	}
+	
 	return{
 		list: listar,
 		get: obtener,
 		save: guardar,
-		remove: borrar
+		remove: borrar,
+		update: actualizar
 	}
 })

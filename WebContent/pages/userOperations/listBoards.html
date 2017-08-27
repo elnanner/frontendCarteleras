@@ -29,7 +29,7 @@
 		          <span class="glyphicon glyphicon-plus"></span>
 		        </a> 
 				<ng-include src="'./pages/userOperations/addBoard.html'"></ng-include>
-
+				
 				<!-- <div id="myModal{{board.id}}" class="modal fade" role="content">
 					<div class="modal-content" >
 					
@@ -68,9 +68,10 @@
 	   
 	        
 	         </div>
-	          <a href="ModificarCartelera.jsp">
+	          <a style="cursor:pointer" data-toggle="modal" data-target="#editModal{{board.id}}">
 	          <span class="glyphicon glyphicon-cog"></span>
 	        </a>
+	        <div ng-include src="'./pages/userOperations/editBoard.html'"></div>
 	         <div>  
 	            
 	           <!-- <a href="#" onclick="eliminar()" data-custom-value="Materias">

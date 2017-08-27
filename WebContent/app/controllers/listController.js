@@ -40,8 +40,8 @@ app.controller('listController',
 	
 	//guarda una pizarra
 	$scope.saveBoard = function(idFatherBoard, name, description){
-		alert("pizarra: "+idFatherBoard+' con titulo: '+name+' tiene descripcion: '+description);
-		var data = {'idFatherBoard': idFatherBoard, 'name': name, 'description': description};
+		//alert("pizarra: "+idFatherBoard+' con titulo: '+name+' tiene descripcion: '+description);
+		var data = {'idFatherBoard': idFatherBoard, 'name': name, 'description': description};debugger;
 		Board.save(data);
 		$('#btnModalClose').trigger('click');//cierra el modal
 		$route.reload();//recarga la página
@@ -53,13 +53,23 @@ app.controller('listController',
 		if(result){
 			
 			Board.remove(idBoard);
-			$route.reload();//recarga la página
+			
 			setTimeout(() => {
 				alert('borrado exitoso');
 			}, 1000);
-			
+			$route.reload();//recarga la página
 			
 		}
+	}
+	
+	//editar cartelera
+	$scope.editBoard=function(id, name, description){
+
+		var data = {'idBoard': id, 'name': name, 'description': description};
+		Board.update(data);
+		$('#btnModalClose').click();//cierra el modal
+		$route.reload();//recarga la página
+		
 	}
 
 }]);

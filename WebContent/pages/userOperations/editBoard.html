@@ -1,0 +1,37 @@
+ 
+				<div class="modal fade" id="editModal{{board.id}}" >
+					<div class="modal-document">
+						<div class="modal-content" >
+						
+							<div class="modal-header">
+	    						<button type="button" id='btnModalClose' class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	    						<h1 id="timeline" class="gris">{{board.name}}</h1>
+	   	 						<h3> {{board.description}}</h3>
+	  						</div>
+	  						
+						    <div class="modal-body">			
+	     					<!-- <div  ng-if="token=='true'"  >  -->
+			   					<form ng-submit="editBoard(board.id, board.name, board.description)" id="" name="">
+									<div class="form-group">
+										
+										<p>Nuevo t&iacute;tulo para pizarra:</p>
+										<input type="text" ng-model="board.name" class="form-control" id="" name="" required>
+									
+										<p>Nueva Descripción:</p>
+										<input type="text" ng-model="board.description" class="form-control" id="descrip"   name="descripcion" required>
+									
+									</div>
+									<input type="submit" value="Actualizar" class="btn btn-primary" />
+								</form>
+							<!-- </div>  -->
+							</div>	
+							
+			   				<div class="modal-footer">
+				        		<button type="button" class="btn btn-default" id='btnCloseModal' data-dismiss="modal">Close</button>
+				      		</div>
+	      					
+						</div>
+					</div>
+				</div>
+
+
